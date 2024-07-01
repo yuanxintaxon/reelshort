@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../veryreal_common.dart'; // Import your styles file
+import '../../resource_common.dart'; // Import your styles file
 
 class NotificationDot extends StatelessWidget {
   const NotificationDot({

@@ -1,7 +1,7 @@
 import 'package:sprintf/sprintf.dart';
 import 'package:timeago/src/messages/lookupmessages.dart';
 
-import '../../../../veryreal_common.dart';
+import '../../../../resource_common.dart';
 
 /// Chinese-China messages
 class TimeagoCustomMessages implements LookupMessages {
