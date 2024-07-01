@@ -15,7 +15,7 @@ class AuthGuard extends GetMiddleware {
   Future<GetNavConfig?> redirectDelegate(GetNavConfig route) async {
     Logger.print("creturn auth middleware location ${route.location}");
     if (!(await isLoggedIn)) {
-      return GetNavConfig.fromRoute(AppRoutes.welcome);
+      return GetNavConfig.fromRoute(AppRoutes.home);
     }
     return SynchronousFuture(route);
   }
@@ -30,9 +30,9 @@ class ArgumentMiddleware extends GetMiddleware {
     Logger.print("creturn middleware arg location ${route.location}");
     if (route.currentPage?.arguments == null) {
       if (await isLoggedIn) {
-        return GetNavConfig.fromRoute(AppRoutes.welcome);
+        return GetNavConfig.fromRoute(AppRoutes.home);
       } else {
-        return GetNavConfig.fromRoute(AppRoutes.welcome);
+        return GetNavConfig.fromRoute(AppRoutes.home);
       }
     }
     // Proceed with the original route
@@ -80,7 +80,7 @@ class ReelShortApp extends StatelessWidget {
         initialBinding: InitBinding(),
         unknownRoute: AppPages.unkownRoute,
         routeInformationParser:
-            GetInformationParser(initialRoute: AppRoutes.welcome),
+            GetInformationParser(initialRoute: AppRoutes.home),
       ),
     );
   }
