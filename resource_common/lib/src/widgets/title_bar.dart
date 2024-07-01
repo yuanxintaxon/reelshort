@@ -74,7 +74,7 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
                 ..height = 24,
               5.hSpace,
               StrRes.reelShort.toText
-                ..style = Styles.ts_FFFFFF_16sp_semibold_sofia_pro,
+                ..style = Styles.ts_FFFFFF_15sp_semibold_sofia_pro,
             ],
           ),
         ),
