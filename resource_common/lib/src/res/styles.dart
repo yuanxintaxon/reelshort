@@ -2482,11 +2482,189 @@ class Styles {
   ).merge(defaultStyle);
 
   /// Sofia Pro
-  // 000000
+  /// 000000
+  static TextStyle ts_000000_20sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+  ).merge(defaultStyle);
   static TextStyle ts_000000_20sp_regular_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_000000,
     fontSize: 20,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_16sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_16sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_16sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_16sp_light_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_14sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_14sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_12sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_12sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+
+  /// c_FFFFFF
+  static TextStyle ts_FFFFFF_20sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_20sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_16sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_16sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_16sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_16sp_light_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_14sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_14sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_12sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_12sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+
+  /// c_807F80
+  static TextStyle ts_8070F80_20sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_20sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_16sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_16sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_16sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_16sp_light_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_14sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_14sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_12sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_12sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 12,
     fontWeight: FontWeight.w400,
   ).merge(defaultStyle);
 }
