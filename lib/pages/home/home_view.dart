@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
                   "https://picsum.photos/id/${index + 50}/1920/1080"),
             ),
             Container(
-              height: 50,
+              height: 36,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
