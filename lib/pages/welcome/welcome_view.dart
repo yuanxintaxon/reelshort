@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:resource_common/resource_common.dart';
 import 'welcome_logic.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -10,7 +11,9 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: const Text("Welcome"),
+      child: Text("Most Trending, Baby, Just Say Yes!",
+          style:
+              TextStyle(fontFamily: "Sofia Pro", fontWeight: FontWeight.w900)),
     );
   }
 }

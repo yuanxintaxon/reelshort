@@ -40,8 +40,8 @@ class ArgumentMiddleware extends GetMiddleware {
   }
 }
 
-class VeryRealMiniApp extends StatelessWidget {
-  const VeryRealMiniApp({super.key});
+class ReelShortApp extends StatelessWidget {
+  const ReelShortApp({super.key});
 
   @override
   Widget build(BuildContext context) {

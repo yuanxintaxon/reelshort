@@ -20,6 +20,9 @@ class Styles {
     },
   );
 
+  /// custom font family
+  static const String sofiaPro = 'Sofia Pro';
+
   static Color c_0089FF = const Color(0xFF0089FF); // 主题色 -- deprecated
   static Color c_FFB4B4FF = const Color(0xFFB4B4FF); // 主题色 -- deprecated
   static Color c_FFA1FAFC = const Color(0xFFA1FAFC); // 主题色 -- deprecated
@@ -74,12 +77,12 @@ class Styles {
   static Color c_4E4E4E = const Color(0xFF4E4E4E); // 说明文字
   static Color c_D30000 = const Color(0xFFD30000); // 错误说明文字
   static Color c_D9D9D9 = const Color(0xFFD9D9D9); // 禁用说明文字
-  static Color c_030303 = const Color(0xFF030303); // 黑色主题默认背景, 主题radical gradient 1
+  static Color c_030303 =
+      const Color(0xFF030303); // 黑色主题默认背景, 主题radical gradient 1
   static Color c_868686 = const Color(0xFF868686); // 黑色主题按钮默认背景
   static Color c_808080 = const Color(0xFF808080); // 黑色主题 border
   static Color c_747373 = const Color(0xFF747373); // 主题radical gradient 2
   static Color c_B3B3B3 = const Color(0xFFB3B3B3); // 主题subtitle
-  static Color c_2E2E2E = const Color(0xFF2E2E2E); // 主题 tile 背景
   static Color c_694B12 = const Color(0xFF694B12); // 主题 special label text
   static Color c_6F6F6F = const Color(0xFF6F6F6F); // 主题 page title
   static Color c_26252B = const Color(0xFF26252B); // 主题 info panel
@@ -96,39 +99,51 @@ class Styles {
   static Color c_CCC8B9 = const Color(0xFFCCC8B9); // 主题 signup float bg
   static Color c_DCDCDC = const Color(0xFFDCDCDC); // 主题 login float bg
   static Color c_EBC651 = const Color(0xFFEBC651); // 主题 dialog button color
-  static Color c_886544 = const Color(0xFF886544); // 主题 dialog button text color
-  static Color c_009229 = const Color(0xFF009229); // 主题 supported language color
+  static Color c_886544 =
+      const Color(0xFF886544); // 主题 dialog button text color
+  static Color c_009229 =
+      const Color(0xFF009229); // 主题 supported language color
   static Color c_EEC929 = const Color(0xFFEEC929); // 主题色 gradient 6 a -- new
   static Color c_D3C58A = const Color(0xFFD3C58A); // 主题色 gradient 6 b -- new
-  static Color c_5E5E5E = const Color(0xFF4E4E4E); // 主题色 unsupported language color
+  static Color c_5E5E5E =
+      const Color(0xFF4E4E4E); // 主题色 unsupported language color
   static Color c_F2EF91 = const Color(0xFFF2EF91); // 主题 tag cat color 1
   static Color c_F29591 = const Color(0xFFF29591); // 主题 tag cat color 2
   static Color c_91DAF2 = const Color(0xFF91DAF2); // 主题 tag cat color 3
   static Color c_91F2D0 = const Color(0xFF91F2D0); // 主题 tag cat color 4
-  static Color c_90D4FF = const Color(0xFF90D4FF); // 主题 intro bubble tip, gradient 8a
+  static Color c_90D4FF =
+      const Color(0xFF90D4FF); // 主题 intro bubble tip, gradient 8a
   static Color c_95CFFF = const Color(0xFF95CFFF); // 主题 gradient 8b -- new
   static Color c_CA8EFF = const Color(0xFFCA8EFF); // 主题 gradient 8c -- new
   static Color c_B1AC8F = const Color(0xFFB1AC8F); // 主题 world moments
-  static Color c_363636 = const Color(0xFF363636); // 主题 world moments dark theme
-  static Color c_DBDBDB = const Color(0xFFDBDBDB); // 主题 world moments dark theme
+  static Color c_363636 =
+      const Color(0xFF363636); // 主题 world moments dark theme
+  static Color c_DBDBDB =
+      const Color(0xFFDBDBDB); // 主题 world moments dark theme
   static Color c_DFCC92 = const Color(0xFFDFCC92); // check conflicts when merge
   static Color c_F9F3E1 = const Color(0xFFF9F3E1); // check conflicts when merge
   static Color c_2A2A2A = const Color(0xFF2A2A2A); // check conflicts when merge
-  static Color c_DFD29F = const Color(0xFFDFD29F); // 主题 gold at subscription page
-  static Color c_8D8D8D = const Color(0xFF8D8D8D); // 主题 gold at subscription page
+  static Color c_DFD29F =
+      const Color(0xFFDFD29F); // 主题 gold at subscription page
+  static Color c_8D8D8D =
+      const Color(0xFF8D8D8D); // 主题 gold at subscription page
   static Color c_FEE9A8 = const Color(0xFFFEE9A8); // 主题色 gradient 8 a -- new
   static Color c_E3C95D = const Color(0xFFE3C95D); // 主题色 gradient 8 b -- new
-  static Color c_FFF5B9 = const Color(0xFFFFF5B9); // whatssapp encrypt hint bg color
-  static Color c_A5A5A5 = const Color(0xFFA5A5A5); // video progress color [played]
+  static Color c_FFF5B9 =
+      const Color(0xFFFFF5B9); // whatssapp encrypt hint bg color
+  static Color c_A5A5A5 =
+      const Color(0xFFA5A5A5); // video progress color [played]
   static Color c_464646 = const Color(0xFF464646); // video progress color [bg]
-  static Color c_5D5D5D = const Color(0xFF5D5D5D); // video progress color [buffered]
+  static Color c_5D5D5D =
+      const Color(0xFF5D5D5D); // video progress color [buffered]
   static Color c_ECECEC = const Color(0xFFECECEC); // new button grey background
   static Color c_DF1025 = const Color(0xFFDF1025); // packet gradient 9 a -- new
   static Color c_FF370C = const Color(0xFFFF370C); // packet gradient 9 b -- new
   static Color c_F7C401 = const Color(0xFFF7C401); // packet gradient 9 c -- new
   static Color c_FFE891 = const Color(0xFFFFE891); // packet gradient 9 d -- new
   static Color c_FFEFAE = const Color(0xFFFFEFAE); // packet text color -- new
-  static Color c_FFC100 = const Color(0xFFFFC100); // packet text bg color -- new
+  static Color c_FFC100 =
+      const Color(0xFFFFC100); // packet text bg color -- new
   static Color c_F3BCC1 = const Color(0xFFF3BCC1); // packet primary text
   static Color c_FF9255 = const Color(0xFFFF9255); // packet primary text
   static Color c_FFCE13 = const Color(0xFFFFCE13); // packet coin border color
@@ -140,7 +155,10 @@ class Styles {
   static Color c_F3DC89 = const Color(0xFFF3DC89); // new gold button color
   static Color c_00C25F = const Color(0xFF00C25F); // earnings details btn color
 
-  // static Color c_E8EAEF_opacity30 = c_E8EAEF.withOpacity(.3); // 默认背景\
+  /// new
+  static Color c_898783 = const Color(0xFF898783); // carousel inacitive tab
+  static Color c_807F80 = const Color(0xFF807F80); // secondary text
+  static Color c_2E2E2E = const Color(0xFF2E2E2E); // navbar bg
 
   static Color c_FFFFFF_opacity0 = c_FFFFFF.withOpacity(.0);
   static Color c_FFFFFF_opacity70 = c_FFFFFF.withOpacity(.7);
@@ -2461,5 +2479,14 @@ class Styles {
       fontSize: 12,
       fontWeight: FontWeight.w500,
     ),
+  ).merge(defaultStyle);
+
+  /// Sofia Pro
+  // 000000
+  static TextStyle ts_000000_20sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
   ).merge(defaultStyle);
 }
