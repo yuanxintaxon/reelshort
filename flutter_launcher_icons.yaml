@@ -1,0 +1,14 @@
+flutter_icons:
+  web:
+    generate: true
+    image_path: "launcher_icon/app-icon.png"
+    background_color: "#FFFFFF"
+    theme_color: "#000000"
+
+
+
+#  flutter pub get
+#  flutter pub run flutter_launcher_icons:main -f <your config file name here>
+
+#  flutter pub get
+#  flutter pub run flutter_launcher_icons:main
