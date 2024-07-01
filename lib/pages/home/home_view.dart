@@ -20,6 +20,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               _buildCarouselView(),
+              20.vSpace,
               _buildMostTrendingView(),
             ],
           ),
@@ -95,17 +96,33 @@ class HomePage extends StatelessWidget {
         fit: BoxFit.cover,
       );
 
-  Widget _buildMostTrendingView() => ListView.separated(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) => _buildDetailedInfoTile(
-            "https://picsum.photos/id/${index + 50}/1080/1920"),
-        separatorBuilder: (BuildContext context, int index) => 30.vSpace,
-        itemCount: 5,
+  Widget _buildSectionView({required String label, required Widget child}) =>
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            label.toText..style = Styles.ts_FFFFFF_20sp_semibold_sofia_pro,
+            15.vSpace,
+            child,
+          ],
+        ),
+      );
+
+  Widget _buildMostTrendingView() => _buildSectionView(
+        label: StrRes.mostTrending,
+        child: ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) => _buildDetailedInfoTile(
+              "https://picsum.photos/id/${index + 50}/1080/1920"),
+          separatorBuilder: (BuildContext context, int index) => 20.vSpace,
+          itemCount: 5,
+        ),
       );
 
   Widget _buildVideoThumbnail(
-          {required String url, double height = 140, double width = 110}) =>
+          {required String url, double height = 132, double width = 110}) =>
       Stack(
         alignment: Alignment.bottomRight,
         children: [
@@ -142,7 +159,7 @@ class HomePage extends StatelessWidget {
                 ImageRes.playWhiteSmall.toImage
                   ..width = 10
                   ..height = 10,
-                "${5}m+".toText
+                "${58}m+".toText
                   ..style = Styles.ts_FFFFFF_12sp_semibold_sofia_pro,
               ],
             ),
@@ -151,30 +168,35 @@ class HomePage extends StatelessWidget {
       );
 
   Widget _buildDetailedInfoTile(String url) => Container(
-        height: 140,
+        height: 132,
+        width: double.infinity,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildVideoThumbnail(url: url, height: 140),
-            10.hSpace,
             Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  "The Double life of a Billionaire Heiress".toText
-                    ..style = Styles.ts_FFFFFF_15sp_medium_sofia_pro,
-                  "Love After Divource".toText
-                    ..style = Styles.ts_8070F80_13sp_semibold_sofia_pro,
-                  Expanded(
-                    child:
-                        "After three years of marriage, CEO Wes Sterling is convinced that his wife Kira is a cheating gold-digger. Fed up with the CEO.brain cancer, Ryder Van Woodsen brutally dumps the love of his life"
-                            .toText
-                          ..style = Styles.ts_8070F80_12sp_semibold_sofia_pro
-                          ..overflow = TextOverflow.ellipsis,
-                  ),
-                  10.vSpace,
-                ],
+              child: Container(
+                padding: const EdgeInsets.only(bottom: 7, top: 7, left: 15),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    "The Double life of a Billionaire Heiress".toText
+                      ..style = Styles.ts_FFFFFF_15sp_medium_sofia_pro,
+                    3.vSpace,
+                    "Love After Divource".toText
+                      ..style = Styles.ts_8070F80_13sp_semibold_sofia_pro,
+                    3.vSpace,
+                    Expanded(
+                      child:
+                          "After three years of marriage, CEO Wes Sterling is convinced that his wife Kira is a cheating gold-digger. Fed up with the CEO.brain cancer, Ryder Van Woodsen brutally dumps the love of his life"
+                              .toText
+                            ..style = Styles.ts_8070F80_12sp_semibold_sofia_pro
+                            ..maxLines = 3
+                            ..overflow = TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
               ),
             )
           ],
