@@ -3,4 +3,4 @@ import 'package:resource_common/resource_common.dart';
 
 import 'app.dart';
 
-void main() => Config.init(() => runApp(const VeryRealMiniApp()));
+void main() => Config.init(() => runApp(const ReelShortApp()));
