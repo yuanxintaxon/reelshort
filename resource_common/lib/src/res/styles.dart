@@ -20,7 +20,7 @@ class Styles {
     },
   );
 
-  /// custom font family
+  /// custom font family (has to be added into root assets folder)
   static const String sofiaPro = 'Sofia Pro';
 
   static Color c_0089FF = const Color(0xFF0089FF); // 主题色 -- deprecated

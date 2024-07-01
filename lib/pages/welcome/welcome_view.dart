@@ -12,8 +12,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Text("Most Trending, Baby, Just Say Yes!",
-          style:
-              TextStyle(fontFamily: "Sofia Pro", fontWeight: FontWeight.w900)),
+          style: Styles.ts_000000_20sp_regular_sofia_pro),
     );
   }
 }
