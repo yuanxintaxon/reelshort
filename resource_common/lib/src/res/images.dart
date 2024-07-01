@@ -67,4 +67,8 @@ class ImageRes {
       "$_dir/ic_checkbox_unchecked_black.webp";
 
   // new
+  static const historyWhite = "$_dir/ic_history_white.webp";
+  static const playWhiteSmall = "$_dir/ic_play_white_small.webp";
+  static const playWhite = "$_dir/ic_play_white.webp";
+  static const profilePlaceholder = "$_dir/ic_profile_placeholder.webp";
 }

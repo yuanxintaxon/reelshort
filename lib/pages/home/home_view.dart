@@ -10,8 +10,13 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Home"),
+    return Scaffold(
+      appBar: TitleBar.navbar(),
     );
   }
+
+  Widget _buildNavbarView() => Container(
+        height: 200,
+        decoration: BoxDecoration(color: Styles.c_2E2E2E),
+      );
 }

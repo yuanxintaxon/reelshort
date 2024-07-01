@@ -255,4 +255,29 @@ class StrRes {
   static String get timeagoSdkWordSeparator => 'timeagoSdkWordSeparator'.tr;
 
   /// new
+  static String get reelShort => 'reelShort'.tr;
+
+  static String get mostTrending => 'mostTrending'.tr;
+
+  static String get continueWatching => 'continueWatching'.tr;
+
+  static String get topPick => 'topPick'.tr;
+
+  static String get newRelease => 'newRelease'.tr;
+
+  static String get hiddenIdentity => 'hiddenIdentity'.tr;
+
+  static String get loveAtFirstSight => 'loveAtFirstSight'.tr;
+
+  static String get youngLove => 'youngLove'.tr;
+
+  static String get toxicNTaboo => 'toxicNTaboo'.tr;
+
+  static String get werewolfNVampire => 'werewolfNVampire'.tr;
+
+  static String get asianStories => 'asianStories'.tr;
+
+  static String get moreRecommended => 'moreRecommended'.tr;
+
+  static String get slidToBottomHint => 'slidToBottomHint'.tr;
 }

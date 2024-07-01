@@ -55,6 +55,45 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => Size.fromHeight(height ?? 44);
 
+  TitleBar.navbar({
+    super.key,
+    Function()? onViewHistory,
+    Function()? onViewProfile,
+    this.showUnderline = false,
+  })  : height = 44,
+        padding = const EdgeInsets.symmetric(horizontal: 18),
+        backgroundColor = Styles.c_2E2E2E,
+        center = null,
+        left = Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              ImageRes.appLogo.toImage
+                ..width = 24
+                ..height = 24,
+              5.hSpace,
+              StrRes.reelShort.toText
+                ..style = Styles.ts_FFFFFF_16sp_semibold_sofia_pro,
+            ],
+          ),
+        ),
+        right = Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            ImageRes.historyWhite.toImage
+              ..width = 24
+              ..height = 24
+              ..onTap = onViewHistory,
+            20.hSpace,
+            ImageRes.profilePlaceholder.toImage
+              ..width = 24
+              ..height = 24
+              ..onTap = onViewProfile,
+          ],
+        );
+
   TitleBar.back({
     super.key,
     String? title,
