@@ -287,6 +287,7 @@ class HomePage extends StatelessWidget {
               showPreviewIcon: true,
               videoProgress: 0.5,
             ),
+            7.vSpace,
             "Baby, Just Say Yes!".toText
               ..style = Styles.ts_FFFFFF_13sp_semibold_sofia_pro
               ..maxLines = 2
