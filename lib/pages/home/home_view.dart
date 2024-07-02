@@ -166,10 +166,12 @@ class HomePage extends StatelessWidget {
           children: [
             AspectRatio(
               aspectRatio: aspectRatio,
-              child: ImageUtil.networkImage(
-                url: url,
-                fit: BoxFit.cover,
-              ),
+              child: (IMUtils.isUrlValid(url))
+                  ? ImageUtil.networkImage(
+                      url: url,
+                      fit: BoxFit.cover,
+                    )
+                  : ImageRes.thumbnailPlaceholder.toImage,
             ),
             Positioned(
               bottom: 0,

@@ -71,4 +71,5 @@ class ImageRes {
   static const playWhiteSmall = "$_dir/ic_play_white_small.webp";
   static const playWhite = "$_dir/ic_play_white.webp";
   static const profilePlaceholder = "$_dir/ic_profile_placeholder.webp";
+  static const thumbnailPlaceholder = "$_dir/ic_thumbnail_placeholder.webp";
 }
