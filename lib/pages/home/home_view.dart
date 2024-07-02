@@ -11,6 +11,7 @@ import 'home_logic.dart';
 
 class HomePage extends StatelessWidget {
   final logic = Get.find<HomeLogic>();
+  final double aspectRatio = 3 / 4;
 
   HomePage({super.key});
 
@@ -154,8 +155,6 @@ class HomePage extends StatelessWidget {
 
   Widget _buildVideoThumbnail({
     required String url,
-    double height = 132,
-    double width = 110,
     bool showLengthTime = true,
     bool showPreviewIcon = false,
     double? videoProgress,
@@ -165,11 +164,12 @@ class HomePage extends StatelessWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            ImageUtil.networkImage(
-              url: url,
-              height: height,
-              width: width,
-              fit: BoxFit.cover,
+            AspectRatio(
+              aspectRatio: aspectRatio,
+              child: ImageUtil.networkImage(
+                url: url,
+                fit: BoxFit.cover,
+              ),
             ),
             Positioned(
               bottom: 0,
@@ -179,7 +179,6 @@ class HomePage extends StatelessWidget {
                 children: [
                   Container(
                     height: 36,
-                    width: width,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [
@@ -243,7 +242,7 @@ class HomePage extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildVideoThumbnail(url: url, height: tileHeight),
+            _buildVideoThumbnail(url: url),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.only(bottom: 7, top: 7, left: 15),
@@ -300,7 +299,6 @@ class HomePage extends StatelessWidget {
     String url, [
     double listHeight = 250,
     double tileWidth = 136,
-    double tileHeight = 174,
   ]) =>
       SizedBox(
         height: listHeight,
@@ -310,8 +308,6 @@ class HomePage extends StatelessWidget {
           children: [
             _buildVideoThumbnail(
               url: url,
-              height: tileHeight,
-              width: tileWidth,
               showLengthTime: false,
               showPreviewIcon: true,
               videoProgress: 0.5,
@@ -362,16 +358,11 @@ class HomePage extends StatelessWidget {
     String url, [
     double? listHeight,
     double tileWidth = 136,
-    double tileHeight = 176,
   ]) {
     var infoTile = Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildVideoThumbnail(
-          url: url,
-          height: tileHeight,
-          width: tileWidth,
-        ),
+        _buildVideoThumbnail(url: url),
         7.vSpace,
         (index % 2 == 0
                 ? "We Are Never Ever Getting Back Together"
@@ -581,11 +572,11 @@ class HomePage extends StatelessWidget {
               LayoutBuilder(builder: (context, constraints) {
             Logger.print("creturn constraints $constraints");
             return _buildSimpleInfoTile(
-                index,
-                "https://picsum.photos/id/${index + 50}/1080/1920",
-                null,
-                constraints.maxWidth,
-                (constraints.maxWidth / 100) * 132);
+              index,
+              "https://picsum.photos/id/${index + 50}/1080/1920",
+              null,
+              constraints.maxWidth,
+            );
           }),
         ),
       );
