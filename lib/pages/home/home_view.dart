@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:resource_common/resource_common.dart';
@@ -41,6 +44,8 @@ class HomePage extends StatelessWidget {
               _buildWerewolfNVampireView(),
               30.vSpace,
               _buildAsianStoriesView(),
+              30.vSpace,
+              _buildMoreRecommendedView(),
             ],
           ),
         ),
@@ -137,7 +142,7 @@ class HomePage extends StatelessWidget {
           itemBuilder: (context, index) => _buildDetailedInfoTile(
               "https://picsum.photos/id/${index + 50}/1080/1920"),
           separatorBuilder: (BuildContext context, int index) => 20.vSpace,
-          itemCount: 15,
+          itemCount: 5,
         ),
       );
 
@@ -347,30 +352,34 @@ class HomePage extends StatelessWidget {
       );
 
   Widget _buildSimpleInfoTile(
+    int index,
     String url, [
-    double listHeight = 250,
+    double? listHeight,
     double tileWidth = 136,
     double tileHeight = 176,
-  ]) =>
-      SizedBox(
-        height: listHeight,
-        width: tileWidth,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildVideoThumbnail(
-              url: url,
-              height: tileHeight,
-              width: tileWidth,
-            ),
-            7.vSpace,
-            "We Are Never Ever Getting Back Together".toText
-              ..style = Styles.ts_FFFFFF_13sp_semibold_sofia_pro
-              ..maxLines = 2
-              ..overflow = TextOverflow.ellipsis,
-          ],
+  ]) {
+    var infoTile = Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildVideoThumbnail(
+          url: url,
+          height: tileHeight,
+          width: tileWidth,
         ),
-      );
+        7.vSpace,
+        (index % 2 == 0
+                ? "We Are Never Ever Getting Back Together"
+                : "Baby, Just Say Tes!")
+            .toText
+          ..style = Styles.ts_FFFFFF_13sp_semibold_sofia_pro
+          ..maxLines = 2
+          ..overflow = TextOverflow.ellipsis,
+      ],
+    );
+    return listHeight != null
+        ? SizedBox(height: listHeight, width: tileWidth, child: infoTile)
+        : infoTile;
+  }
 
   Widget _buildTopPickView([double listHeight = 240]) => _buildSectionView(
         label: StrRes.topPick,
@@ -385,6 +394,7 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
               separatorBuilder: (BuildContext context, int index) => 15.hSpace,
@@ -406,6 +416,7 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
               separatorBuilder: (BuildContext context, int index) => 15.hSpace,
@@ -428,6 +439,7 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
               separatorBuilder: (BuildContext context, int index) => 15.hSpace,
@@ -450,6 +462,7 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
               separatorBuilder: (BuildContext context, int index) => 15.hSpace,
@@ -471,6 +484,7 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
               separatorBuilder: (BuildContext context, int index) => 15.hSpace,
@@ -492,6 +506,7 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
               separatorBuilder: (BuildContext context, int index) => 15.hSpace,
@@ -514,6 +529,7 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
               separatorBuilder: (BuildContext context, int index) => 15.hSpace,
@@ -535,12 +551,36 @@ class HomePage extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
               itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
               separatorBuilder: (BuildContext context, int index) => 15.hSpace,
               itemCount: 15,
             ),
           ),
+        ),
+      );
+
+  Widget _buildMoreRecommendedView([double listHeight = 240]) =>
+      _buildSectionView(
+        label: StrRes.moreRecommended,
+        child: MasonryGridView.count(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          crossAxisCount: 2,
+          mainAxisSpacing: 30,
+          crossAxisSpacing: 15,
+          itemCount: 15,
+          itemBuilder: (context, index) =>
+              LayoutBuilder(builder: (context, constraints) {
+            Logger.print("creturn constraints $constraints");
+            return _buildSimpleInfoTile(
+                index,
+                "https://picsum.photos/id/${index + 50}/1080/1920",
+                null,
+                constraints.maxWidth,
+                (constraints.maxWidth / 100) * 132);
+          }),
         ),
       );
 }
