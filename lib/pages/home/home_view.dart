@@ -27,6 +27,20 @@ class HomePage extends StatelessWidget {
               _buildContinueWatchingView(),
               30.vSpace,
               _buildTopPickView(),
+              30.vSpace,
+              _buildNewReleaseView(),
+              30.vSpace,
+              _buildHiddenIdentityView(),
+              30.vSpace,
+              _buildLoveAtFirstSightView(),
+              30.vSpace,
+              _buildYoungLoveView(),
+              30.vSpace,
+              _buildToxicNTabooView(),
+              30.vSpace,
+              _buildWerewolfNVampireView(),
+              30.vSpace,
+              _buildAsianStoriesView(),
             ],
           ),
         ),
@@ -331,28 +345,6 @@ class HomePage extends StatelessWidget {
         ),
       );
 
-  Widget _buildTopPickView([double listHeight = 250]) => _buildSectionView(
-        label: StrRes.topPick,
-        child: SizedBox(
-          height: listHeight,
-          child: RawScrollbar(
-            // thumbVisibility: true,
-            // trackVisibility: true,
-            thickness: 5,
-            child: ListView.separated(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              physics: const AlwaysScrollableScrollPhysics(),
-              itemBuilder: (context, index) => _buildSimpleInfoTile(
-                  "https://picsum.photos/id/${index + 50}/1080/1920",
-                  listHeight),
-              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
-              itemCount: 5,
-            ),
-          ),
-        ),
-      );
-
   Widget _buildSimpleInfoTile(
     String url, [
     double listHeight = 250,
@@ -376,6 +368,178 @@ class HomePage extends StatelessWidget {
               ..maxLines = 2
               ..overflow = TextOverflow.ellipsis,
           ],
+        ),
+      );
+
+  Widget _buildTopPickView([double listHeight = 240]) => _buildSectionView(
+        label: StrRes.topPick,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            // thumbVisibility: true,
+            // trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
+              itemCount: 5,
+            ),
+          ),
+        ),
+      );
+  Widget _buildNewReleaseView([double listHeight = 240]) => _buildSectionView(
+        label: StrRes.newRelease,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            // thumbVisibility: true,
+            // trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
+              itemCount: 5,
+            ),
+          ),
+        ),
+      );
+  Widget _buildHiddenIdentityView([double listHeight = 240]) =>
+      _buildSectionView(
+        label: StrRes.hiddenIdentity,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            // thumbVisibility: true,
+            // trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
+              itemCount: 5,
+            ),
+          ),
+        ),
+      );
+  Widget _buildLoveAtFirstSightView([double listHeight = 240]) =>
+      _buildSectionView(
+        label: StrRes.loveAtFirstSight,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            // thumbVisibility: true,
+            // trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
+              itemCount: 5,
+            ),
+          ),
+        ),
+      );
+  Widget _buildYoungLoveView([double listHeight = 240]) => _buildSectionView(
+        label: StrRes.youngLove,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            // thumbVisibility: true,
+            // trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
+              itemCount: 5,
+            ),
+          ),
+        ),
+      );
+  Widget _buildToxicNTabooView([double listHeight = 240]) => _buildSectionView(
+        label: StrRes.toxicNTaboo,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            // thumbVisibility: true,
+            // trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
+              itemCount: 5,
+            ),
+          ),
+        ),
+      );
+  Widget _buildWerewolfNVampireView([double listHeight = 240]) =>
+      _buildSectionView(
+        label: StrRes.werewolfNVampire,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            // thumbVisibility: true,
+            // trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
+              itemCount: 5,
+            ),
+          ),
+        ),
+      );
+  Widget _buildAsianStoriesView([double listHeight = 240]) => _buildSectionView(
+        label: StrRes.asianStories,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            // thumbVisibility: true,
+            // trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
+              itemCount: 5,
+            ),
+          ),
         ),
       );
 }
