@@ -245,14 +245,14 @@ class HomePage extends StatelessWidget {
         ),
       );
 
-  Widget _buildContinueWatchingView([double listHeight = 250]) =>
+  Widget _buildContinueWatchingView([double listHeight = 256]) =>
       _buildSectionView(
         label: StrRes.continueWatching,
         child: SizedBox(
           height: listHeight,
           child: RawScrollbar(
-            thumbVisibility: true,
-            trackVisibility: true,
+            // thumbVisibility: true,
+            // trackVisibility: true,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
@@ -261,7 +261,7 @@ class HomePage extends StatelessWidget {
               itemBuilder: (context, index) => _buildLastWatchedVideoTile(
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
-              separatorBuilder: (BuildContext context, int index) => 20.hSpace,
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
               itemCount: 5,
             ),
           ),
