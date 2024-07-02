@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:resource_common/resource_common.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'home_logic.dart';
@@ -22,6 +23,8 @@ class HomePage extends StatelessWidget {
               _buildCarouselView(),
               20.vSpace,
               _buildMostTrendingView(),
+              20.vSpace,
+              _buildContinueWatchingView(),
             ],
           ),
         ),
@@ -121,59 +124,98 @@ class HomePage extends StatelessWidget {
         ),
       );
 
-  Widget _buildVideoThumbnail(
-          {required String url, double height = 132, double width = 110}) =>
-      Stack(
-        alignment: Alignment.bottomRight,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(5),
-            child: ImageUtil.networkImage(
+  Widget _buildVideoThumbnail({
+    required String url,
+    double height = 132,
+    double width = 110,
+    bool showLengthTime = true,
+    bool showPreviewIcon = false,
+    double? videoProgress,
+  }) =>
+      ClipRRect(
+        borderRadius: BorderRadius.circular(5),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            ImageUtil.networkImage(
               url: url,
               height: height,
               width: width,
               fit: BoxFit.cover,
             ),
-          ),
-          Container(
-            height: 36,
-            width: width,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Styles.c_000000_opacity0,
-                  Styles.c_000000_opacity95,
-                  Styles.c_000000_opacity100,
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Column(
+                children: [
+                  Container(
+                    height: 36,
+                    width: width,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Styles.c_000000_opacity0,
+                          Styles.c_000000_opacity95,
+                          Styles.c_000000_opacity100,
+                        ],
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        stops: const [0.1, 0.9, 1.0],
+                      ),
+                    ),
+                  ),
+                  if (videoProgress != null)
+                    _buildProgressView(
+                      percent: videoProgress,
+                    ),
                 ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                stops: const [0.1, 0.9, 1.0],
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 5, right: 5),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                ImageRes.playWhiteSmall.toImage
-                  ..width = 10
-                  ..height = 10,
-                "${58}m+".toText
-                  ..style = Styles.ts_FFFFFF_12sp_semibold_sofia_pro,
-              ],
-            ),
-          ),
-        ],
+            if (showLengthTime)
+              Positioned(
+                right: 0,
+                bottom: 0,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 5, right: 5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      ImageRes.playWhiteSmall.toImage
+                        ..width = 10
+                        ..height = 10,
+                      "${58}m+".toText
+                        ..style = Styles.ts_FFFFFF_12sp_semibold_sofia_pro,
+                    ],
+                  ),
+                ),
+              ),
+            if (showPreviewIcon)
+              Container(
+                decoration: BoxDecoration(
+                  color: Styles.c_000000_opacity65,
+                  borderRadius: BorderRadius.circular(200),
+                ),
+                padding: const EdgeInsets.all(12),
+                child: Transform.translate(
+                  offset: const Offset(3, 0),
+                  child: ImageRes.playWhite.toImage
+                    ..width = 18
+                    ..height = 18,
+                ),
+              ),
+          ],
+        ),
       );
 
-  Widget _buildDetailedInfoTile(String url) => Container(
-        height: 132,
+  Widget _buildDetailedInfoTile(String url, [double tileHeight = 132]) =>
+      SizedBox(
+        height: tileHeight,
         width: double.infinity,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _buildVideoThumbnail(url: url, height: 140),
+            _buildVideoThumbnail(url: url, height: tileHeight),
             Expanded(
               child: Container(
                 padding: const EdgeInsets.only(bottom: 7, top: 7, left: 15),
@@ -200,6 +242,88 @@ class HomePage extends StatelessWidget {
               ),
             )
           ],
+        ),
+      );
+
+  Widget _buildContinueWatchingView([double listHeight = 250]) =>
+      _buildSectionView(
+        label: StrRes.continueWatching,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            thumbVisibility: true,
+            trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildLastWatchedVideoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 20.hSpace,
+              itemCount: 5,
+            ),
+          ),
+        ),
+      );
+  Widget _buildLastWatchedVideoTile(
+    String url, [
+    double listHeight = 250,
+    double tileWidth = 136,
+    double tileHeight = 180,
+  ]) =>
+      SizedBox(
+        height: listHeight,
+        width: tileWidth,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildVideoThumbnail(
+              url: url,
+              height: tileHeight,
+              width: tileWidth,
+              showLengthTime: false,
+              showPreviewIcon: true,
+              videoProgress: 0.5,
+            ),
+            "Baby, Just Say Yes!".toText
+              ..style = Styles.ts_FFFFFF_13sp_semibold_sofia_pro
+              ..maxLines = 2
+              ..overflow = TextOverflow.ellipsis,
+            4.vSpace,
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                      text: "EP.${0}",
+                      style: Styles.ts_D5495B_12sp_black_sofia_pro),
+                  TextSpan(
+                      text: " / ",
+                      style: Styles.ts_8070F80_12sp_black_sofia_pro),
+                  TextSpan(
+                      text: "EP.${83}",
+                      style: Styles.ts_8070F80_12sp_black_sofia_pro)
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
+
+  Widget _buildProgressView({required double percent}) => ClipRRect(
+        borderRadius: BorderRadius.circular(0),
+        child: LinearPercentIndicator(
+          padding: EdgeInsets.zero,
+          animation: true,
+          animationDuration: 100,
+          animateFromLastPercent: true,
+          isRTL: false,
+          lineHeight: 2,
+          percent: percent,
+          barRadius: const Radius.circular(0),
+          backgroundColor: Styles.c_2E2E2E,
+          progressColor: Styles.c_D5495B,
         ),
       );
 }

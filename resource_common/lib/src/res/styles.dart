@@ -159,6 +159,7 @@ class Styles {
   static Color c_898783 = const Color(0xFF898783); // carousel inacitive tab
   static Color c_807F80 = const Color(0xFF807F80); // secondary text
   static Color c_2E2E2E = const Color(0xFF2E2E2E); // navbar bg
+  static Color c_D5495B = const Color(0xFFD5495B); // theme primary color
 
   static Color c_FFFFFF_opacity0 = c_FFFFFF.withOpacity(.0);
   static Color c_FFFFFF_opacity70 = c_FFFFFF.withOpacity(.7);
@@ -2537,6 +2538,18 @@ class Styles {
     fontSize: 13,
     fontWeight: FontWeight.w400,
   ).merge(defaultStyle);
+  static TextStyle ts_000000_12sp_black_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 12,
+    fontWeight: FontWeight.w900,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_12sp_bold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+  ).merge(defaultStyle);
   static TextStyle ts_000000_12sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_000000,
@@ -2550,7 +2563,7 @@ class Styles {
     fontWeight: FontWeight.w400,
   ).merge(defaultStyle);
 
-  /// c_FFFFFF
+  /// FFFFFF
   static TextStyle ts_FFFFFF_20sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_FFFFFF,
@@ -2621,6 +2634,20 @@ class Styles {
     fontWeight: FontWeight.w400,
     leadingDistribution: TextLeadingDistribution.proportional,
   ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_12sp_black_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 12,
+    fontWeight: FontWeight.w900,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_12sp_bold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
   static TextStyle ts_FFFFFF_12sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_FFFFFF,
@@ -2636,7 +2663,7 @@ class Styles {
     leadingDistribution: TextLeadingDistribution.proportional,
   ).merge(defaultStyle);
 
-  /// c_807F80
+  /// 807F80
   static TextStyle ts_8070F80_20sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_807F80,
@@ -2693,12 +2720,25 @@ class Styles {
     fontWeight: FontWeight.w500,
     leadingDistribution: TextLeadingDistribution.proportional,
   ).merge(defaultStyle);
-
   static TextStyle ts_8070F80_13sp_regular_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_807F80,
     fontSize: 13,
     fontWeight: FontWeight.w400,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_12sp_black_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 12,
+    fontWeight: FontWeight.w900,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_8070F80_12sp_bold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
     leadingDistribution: TextLeadingDistribution.proportional,
   ).merge(defaultStyle);
   static TextStyle ts_8070F80_12sp_semibold_sofia_pro = TextStyle(
@@ -2711,6 +2751,99 @@ class Styles {
   static TextStyle ts_8070F80_12sp_regular_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_807F80,
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+
+  /// c_D5495B
+  static TextStyle ts_D5495B_20sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_20sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_15sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 15,
+    fontWeight: FontWeight.w600,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_15sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 15,
+    fontWeight: FontWeight.w500,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_15sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 15,
+    fontWeight: FontWeight.w400,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_15sp_light_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 15,
+    fontWeight: FontWeight.w300,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_13sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 13,
+    fontWeight: FontWeight.w600,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_13sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_13sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_12sp_black_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 12,
+    fontWeight: FontWeight.w900,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_12sp_bold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 12,
+    fontWeight: FontWeight.w700,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_12sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_12sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
     fontSize: 12,
     fontWeight: FontWeight.w400,
     leadingDistribution: TextLeadingDistribution.proportional,
