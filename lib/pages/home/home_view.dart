@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
               _buildCarouselView(),
               20.vSpace,
               _buildMostTrendingView(),
-              20.vSpace,
+              60.vSpace,
               _buildContinueWatchingView(),
             ],
           ),
