@@ -25,6 +25,8 @@ class HomePage extends StatelessWidget {
               _buildMostTrendingView(),
               60.vSpace,
               _buildContinueWatchingView(),
+              30.vSpace,
+              _buildTopPickView(),
             ],
           ),
         ),
@@ -245,7 +247,7 @@ class HomePage extends StatelessWidget {
         ),
       );
 
-  Widget _buildContinueWatchingView([double listHeight = 256]) =>
+  Widget _buildContinueWatchingView([double listHeight = 250]) =>
       _buildSectionView(
         label: StrRes.continueWatching,
         child: SizedBox(
@@ -267,11 +269,12 @@ class HomePage extends StatelessWidget {
           ),
         ),
       );
+
   Widget _buildLastWatchedVideoTile(
     String url, [
     double listHeight = 250,
     double tileWidth = 136,
-    double tileHeight = 180,
+    double tileHeight = 174,
   ]) =>
       SizedBox(
         height: listHeight,
@@ -288,7 +291,7 @@ class HomePage extends StatelessWidget {
               videoProgress: 0.5,
             ),
             7.vSpace,
-            "Baby, Just Say Yes!".toText
+            "The Double Life of a Billionair Heiress".toText
               ..style = Styles.ts_FFFFFF_13sp_semibold_sofia_pro
               ..maxLines = 2
               ..overflow = TextOverflow.ellipsis,
@@ -325,6 +328,54 @@ class HomePage extends StatelessWidget {
           barRadius: const Radius.circular(0),
           backgroundColor: Styles.c_2E2E2E,
           progressColor: Styles.c_D5495B,
+        ),
+      );
+
+  Widget _buildTopPickView([double listHeight = 250]) => _buildSectionView(
+        label: StrRes.topPick,
+        child: SizedBox(
+          height: listHeight,
+          child: RawScrollbar(
+            // thumbVisibility: true,
+            // trackVisibility: true,
+            thickness: 5,
+            child: ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemBuilder: (context, index) => _buildSimpleInfoTile(
+                  "https://picsum.photos/id/${index + 50}/1080/1920",
+                  listHeight),
+              separatorBuilder: (BuildContext context, int index) => 15.hSpace,
+              itemCount: 5,
+            ),
+          ),
+        ),
+      );
+
+  Widget _buildSimpleInfoTile(
+    String url, [
+    double listHeight = 250,
+    double tileWidth = 136,
+    double tileHeight = 176,
+  ]) =>
+      SizedBox(
+        height: listHeight,
+        width: tileWidth,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildVideoThumbnail(
+              url: url,
+              height: tileHeight,
+              width: tileWidth,
+            ),
+            7.vSpace,
+            "We Are Never Ever Getting Back Together".toText
+              ..style = Styles.ts_FFFFFF_13sp_semibold_sofia_pro
+              ..maxLines = 2
+              ..overflow = TextOverflow.ellipsis,
+          ],
         ),
       );
 }
