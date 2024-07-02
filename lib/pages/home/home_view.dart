@@ -46,6 +46,12 @@ class HomePage extends StatelessWidget {
               _buildAsianStoriesView(),
               30.vSpace,
               _buildMoreRecommendedView(),
+              40.vSpace,
+              if (true) ...[
+                StrRes.slidToBottomHint.toText
+                  ..style = Styles.ts_8070F80_12sp_bold_sofia_pro,
+                80.vSpace,
+              ]
             ],
           ),
         ),
