@@ -43,7 +43,7 @@ class HomePage extends StatelessWidget {
               viewportFraction: 1.0,
               aspectRatio: 16 / 9,
               height: 160,
-              enableInfiniteScroll: true,
+              enableInfiniteScroll: false,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 4),
               autoPlayAnimationDuration: const Duration(milliseconds: 800),
