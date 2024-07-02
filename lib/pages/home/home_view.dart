@@ -76,7 +76,7 @@ class HomePage extends StatelessWidget {
               // enlargeCenterPage: true,
               // enlargeStrategy: CenterPageEnlargeStrategy.height,
             ),
-            itemCount: 15,
+            itemCount: 5,
             itemBuilder: (context, index, realIndex) => _buildImageBannerTile(
                 "https://picsum.photos/id/${index + 50}/1920/1080"),
           ),
