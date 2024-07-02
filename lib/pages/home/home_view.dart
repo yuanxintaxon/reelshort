@@ -166,7 +166,7 @@ class HomePage extends StatelessWidget {
           children: [
             AspectRatio(
               aspectRatio: aspectRatio,
-              child: (!IMUtils.isUrlValid(url))
+              child: (IMUtils.isUrlValid(url))
                   ? (ImageUtil.networkImage(
                       url: url,
                       fit: BoxFit.cover,
