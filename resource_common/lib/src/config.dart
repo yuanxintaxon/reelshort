@@ -6,6 +6,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:resource_common/resource_common.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:timeago/timeago.dart' as Timeago;
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'models/config/AppEnv.dart';
 
@@ -14,6 +15,7 @@ class Config {
   static Future init(Function() runApp) async {
     WidgetsFlutterBinding.ensureInitialized();
 
+    usePathUrlStrategy();
     // Initialize the AppEnv with the desired environment
     AppEnv.instance.init(Environment.DEV);
 
