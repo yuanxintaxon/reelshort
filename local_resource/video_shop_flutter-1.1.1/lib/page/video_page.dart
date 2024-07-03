@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_shop_flutter/page/page.dart';
 import 'package:video_shop_flutter/video_shop_flutter.dart';
 
 final List<Color> gradientBackground = [
@@ -26,7 +27,7 @@ const List<double> stopGradient = [
   1.0,
 ];
 
-class VideoPage extends StatelessWidget {
+class VideoPage extends StatefulWidget {
   /// Create video page view.
   const VideoPage({
     Key? key,
@@ -68,8 +69,19 @@ class VideoPage extends StatelessWidget {
   final Function()? onPlaying;
   final bool? enableBackgroundContent;
   final bool autoPlay;
+
+  @override
+  State<VideoPage> createState() => _VideoPageState();
+}
+
+class _VideoPageState extends State<VideoPage>
+    with AutomaticKeepAliveClientMixin<VideoPage> {
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Container(
       color: Colors.black,
       child: Stack(
@@ -78,16 +90,17 @@ class VideoPage extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: VideoItem(
-              video: video,
-              videoWatched: videoWatched,
-              index: index,
-              updateLastSeenPage: updateLastSeenPage,
-              onPlaying: onPlaying,
-              autoPlay: autoPlay,
+              video: widget.video,
+              videoWatched: widget.videoWatched,
+              index: widget.index,
+              updateLastSeenPage: widget.updateLastSeenPage,
+              onPlaying: widget.onPlaying,
+              autoPlay: widget.autoPlay,
             ),
           ),
           // Background content.
-          if (enableBackgroundContent != null && enableBackgroundContent!)
+          if (widget.enableBackgroundContent != null &&
+              widget.enableBackgroundContent!)
             Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -104,34 +117,35 @@ class VideoPage extends StatelessWidget {
             ),
           // Video info______________.
           Align(
-            alignment: informationAlign ?? Alignment.bottomLeft,
+            alignment: widget.informationAlign ?? Alignment.bottomLeft,
             child: Padding(
-              padding: informationPadding ??
+              padding: widget.informationPadding ??
                   const EdgeInsets.only(left: 20, bottom: 70),
-              child: (customVideoInfo != null)
-                  ? customVideoInfo!(video)
+              child: (widget.customVideoInfo != null)
+                  ? widget.customVideoInfo!(widget.video)
                   : VideoInformation(
-                      video.user ?? "",
-                      video.videoTitle ?? "",
-                      video.videoDescription ?? "",
+                      widget.video.user ?? "",
+                      widget.video.videoTitle ?? "",
+                      widget.video.videoDescription ?? "",
                     ),
             ),
           ),
           // Video actions______________.
           Align(
-            alignment: actionsAlign ?? Alignment.bottomRight,
+            alignment: widget.actionsAlign ?? Alignment.bottomRight,
             child: Padding(
-              padding: actionsPadding ?? const EdgeInsets.only(bottom: 70),
+              padding:
+                  widget.actionsPadding ?? const EdgeInsets.only(bottom: 70),
               child: ActionsToolbar(
-                enableBackgroundContent: enableBackgroundContent,
-                video: video,
-                followWidget: followWidget,
-                likeWidget: likeWidget,
-                commentWidget: commentWidget,
-                shareWidget: shareWidget,
-                buyWidget: buyWidget,
-                viewWidget: viewWidget,
-                index: index,
+                enableBackgroundContent: widget.enableBackgroundContent,
+                video: widget.video,
+                followWidget: widget.followWidget,
+                likeWidget: widget.likeWidget,
+                commentWidget: widget.commentWidget,
+                shareWidget: widget.shareWidget,
+                buyWidget: widget.buyWidget,
+                viewWidget: widget.viewWidget,
+                index: widget.index,
               ),
             ),
           ),

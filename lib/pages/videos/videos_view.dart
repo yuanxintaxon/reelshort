@@ -18,7 +18,10 @@ class VideosPage extends StatelessWidget {
             VideoShopFlutter(
               // Called every time video page is changed.
               updateLastSeenPage: (lastSeenPageIndex) {
-                // todo
+                // logic.updateBrowserUrl(lastSeenPageIndex);
+              },
+              onPageChanged: (pageIndex) {
+                logic.updateBrowserUrl(pageIndex);
               },
               onPlaying: () {
                 logic.enableAutoPlay();

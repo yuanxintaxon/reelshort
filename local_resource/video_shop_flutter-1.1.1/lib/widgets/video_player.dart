@@ -4,9 +4,13 @@ import 'package:video_player/video_player.dart';
 class VideoPlayerApp extends StatefulWidget {
   /// Create video player.
   const VideoPlayerApp(
-      {Key? key, required this.controller, required this.onPlaying})
+      {Key? key,
+      required this.controller,
+      required this.autoPlay,
+      required this.onPlaying})
       : super(key: key);
   final VideoPlayerController controller;
+  final bool autoPlay;
   final Function()? onPlaying;
   @override
   State<VideoPlayerApp> createState() => _VideoPlayerAppState();

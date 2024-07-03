@@ -585,7 +585,6 @@ class HomePage extends StatelessWidget {
           itemCount: 15,
           itemBuilder: (context, index) =>
               LayoutBuilder(builder: (context, constraints) {
-            Logger.print("creturn constraints $constraints");
             return _buildSimpleInfoTile(
               index,
               "https://picsum.photos/id/${index + 50}/1080/1920",

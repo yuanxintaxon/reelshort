@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
+import 'package:reelshort/routes/app_pages.dart';
 import 'package:resource_common/resource_common.dart';
+import 'dart:html' as html;
 
 class VideosLogic extends GetxController {
   final data = <Map<String, dynamic>>[].obs;
@@ -111,11 +113,18 @@ class VideosLogic extends GetxController {
       },
     ];
     data.assignAll(dummyData);
+    updateBrowserUrl();
   }
 
   void enableAutoPlay() {
     if (autoPlay.value == false) {
       autoPlay.value = true;
     }
+  }
+
+  void updateBrowserUrl([int lastSeenPageIndex = 0]) async {
+    final video = data.elementAt(lastSeenPageIndex);
+    html.window.history
+        .replaceState(null, "", '${AppRoutes.videos}?id=${video["id"]}');
   }
 }

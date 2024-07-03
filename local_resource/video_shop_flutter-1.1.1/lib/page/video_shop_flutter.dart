@@ -72,6 +72,7 @@ class VideoShopFlutter extends StatefulWidget {
     this.informationAlign,
     this.actionsAlign,
     this.updateLastSeenPage,
+    this.onPageChanged,
     this.onPlaying,
     this.enableBackgroundContent,
     this.autoPlay,
@@ -88,6 +89,11 @@ class VideoShopFlutter extends StatefulWidget {
   ///
   /// Called every time video page is changed.
   final Function(int lastSeenPage)? updateLastSeenPage;
+
+  /// Callback function to update page changed.
+  ///
+  /// Called every time a page is changed.
+  final Function(int pageIndex)? onPageChanged;
 
   /// Callback function when video is played
   ///
@@ -229,7 +235,10 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
     }
     return PageView(
       controller: _pageController,
+      onPageChanged: widget.onPageChanged,
       scrollDirection: Axis.vertical,
+      physics: const AlwaysScrollableScrollPhysics(),
+      allowImplicitScrolling: true,
       children: List.generate(
         widget.listData.length,
         (index) => VideoPage(

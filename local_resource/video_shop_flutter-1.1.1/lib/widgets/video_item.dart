@@ -29,6 +29,12 @@ class _VideoItemState extends State<VideoItem> {
   VideoPlayerController? _videoController;
 
   @override
+  void initState() {
+    print("creturn initvideo ${widget.video.id}");
+    super.initState();
+  }
+
+  @override
   void dispose() async {
     super.dispose();
     if (_videoController != null) {
@@ -59,9 +65,7 @@ class _VideoItemState extends State<VideoItem> {
                     widget.videoWatched.add(widget.video.id!.toString());
                   }
                   // Update last seen video.
-                  if (widget.updateLastSeenPage != null) {
-                    widget.updateLastSeenPage!(widget.index);
-                  }
+                  widget.updateLastSeenPage?.call(widget.index);
                 }
               }
               if (visibleInfo.visibleFraction == 0) {
@@ -75,6 +79,7 @@ class _VideoItemState extends State<VideoItem> {
             key: UniqueKey(),
             child: VideoPlayerApp(
               controller: _videoController!,
+              autoPlay: widget.autoPlay,
               onPlaying: widget.onPlaying,
             ),
           )
@@ -82,14 +87,14 @@ class _VideoItemState extends State<VideoItem> {
             key: UniqueKey(),
             child: Image.network(
               widget.video.thumbnail ?? "",
-              loadingBuilder: (context, child, loadingProgress) {
-                return const AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: Center(
-                    child: Icon(Icons.play_arrow, size: 80, color: Colors.grey),
-                  ),
-                );
-              },
+              // loadingBuilder: (context, child, loadingProgress) {
+              //   return const AspectRatio(
+              //     aspectRatio: 16 / 9,
+              //     child: Center(
+              //       child: Icon(Icons.play_arrow, size: 80, color: Colors.grey),
+              //     ),
+              //   );
+              // },
               errorBuilder: (context, error, stackTrace) {
                 return const AspectRatio(
                   aspectRatio: 16 / 9,
