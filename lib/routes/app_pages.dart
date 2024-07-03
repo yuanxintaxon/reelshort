@@ -19,7 +19,7 @@ class AppPages {
     bool preventDuplicates = true,
     bool fullscreenDialog = false,
     Duration? transitionDuration,
-    Transition transition = Transition.cupertino,
+    Transition transition = Transition.noTransition,
     List<GetMiddleware>? middlewares,
   }) =>
       GetPage(

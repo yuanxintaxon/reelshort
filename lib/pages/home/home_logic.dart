@@ -6,6 +6,7 @@ import 'dart:html' as html;
 
 class HomeLogic extends GetxController {
   final activeIndex = 0.obs;
+
   @override
   void onReady() {
     // autoJump();

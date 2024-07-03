@@ -11,11 +11,15 @@ class VideoItem extends StatefulWidget {
     required this.video,
     required this.videoWatched,
     required this.updateLastSeenPage,
+    required this.onPlaying,
+    required this.autoPlay,
     required this.index,
   }) : super(key: key);
   final VideoModel video;
   final List<String> videoWatched;
   final Function(int lastSeenPage)? updateLastSeenPage;
+  final Function()? onPlaying;
+  final bool autoPlay;
   final int index;
   @override
   State<VideoItem> createState() => _VideoItemState();
@@ -25,10 +29,10 @@ class _VideoItemState extends State<VideoItem> {
   VideoPlayerController? _videoController;
 
   @override
-  void dispose() async{
+  void dispose() async {
     super.dispose();
-    if(_videoController != null){
-      if(_videoController!.value.isPlaying){
+    if (_videoController != null) {
+      if (_videoController!.value.isPlaying) {
         _videoController!.pause();
       }
     }
@@ -44,7 +48,11 @@ class _VideoItemState extends State<VideoItem> {
             onVisibilityChanged: (visibleInfo) {
               if (visibleInfo.visibleFraction > 0.8) {
                 if (!_videoController!.value.isPlaying) {
-                  _videoController!.play();
+                  if (widget.autoPlay) {
+                    _videoController!.play();
+                    widget.onPlaying?.call();
+                  }
+
                   _videoController!.setLooping(true);
                   // Update watched videos.
                   if (widget.video.id != null) {
@@ -56,9 +64,9 @@ class _VideoItemState extends State<VideoItem> {
                   }
                 }
               }
-              if(visibleInfo.visibleFraction == 0){
-                if(_videoController != null){
-                  if(_videoController!.value.isPlaying){
+              if (visibleInfo.visibleFraction == 0) {
+                if (_videoController != null) {
+                  if (_videoController!.value.isPlaying) {
                     _videoController!.pause();
                   }
                 }
@@ -67,6 +75,7 @@ class _VideoItemState extends State<VideoItem> {
             key: UniqueKey(),
             child: VideoPlayerApp(
               controller: _videoController!,
+              onPlaying: widget.onPlaying,
             ),
           )
         : VisibilityDetector(
@@ -93,14 +102,13 @@ class _VideoItemState extends State<VideoItem> {
             ),
             onVisibilityChanged: (info) {
               if (info.visibleFraction > 0.6) {
-                _videoController =
-                    VideoPlayerController.networkUrl(
+                _videoController = VideoPlayerController.networkUrl(
                     Uri.parse(widget.video.url))
-                      ..initialize().then(
-                        (_) {
-                          setState(() {});
-                        },
-                      );
+                  ..initialize().then(
+                    (_) {
+                      setState(() {});
+                    },
+                  );
               }
             },
           );

@@ -45,7 +45,9 @@ class VideoPage extends StatelessWidget {
     this.actionsPadding,
     required this.index,
     required this.updateLastSeenPage,
+    required this.onPlaying,
     this.enableBackgroundContent = false,
+    this.autoPlay = false,
   }) : super(key: key);
   final VideoModel video;
   final Widget Function(VideoModel? video)? customVideoInfo;
@@ -63,7 +65,9 @@ class VideoPage extends StatelessWidget {
   final EdgeInsetsGeometry? actionsPadding;
   final int index;
   final Function(int lastSeenPage)? updateLastSeenPage;
+  final Function()? onPlaying;
   final bool? enableBackgroundContent;
+  final bool autoPlay;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -78,6 +82,8 @@ class VideoPage extends StatelessWidget {
               videoWatched: videoWatched,
               index: index,
               updateLastSeenPage: updateLastSeenPage,
+              onPlaying: onPlaying,
+              autoPlay: autoPlay,
             ),
           ),
           // Background content.

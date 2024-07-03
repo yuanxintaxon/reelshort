@@ -72,7 +72,9 @@ class VideoShopFlutter extends StatefulWidget {
     this.informationAlign,
     this.actionsAlign,
     this.updateLastSeenPage,
+    this.onPlaying,
     this.enableBackgroundContent,
+    this.autoPlay,
   }) : super(key: key);
 
   /// Index of last seen page.
@@ -86,6 +88,11 @@ class VideoShopFlutter extends StatefulWidget {
   ///
   /// Called every time video page is changed.
   final Function(int lastSeenPage)? updateLastSeenPage;
+
+  /// Callback function when video is played
+  ///
+  /// Called every time a video is palyed
+  final Function()? onPlaying;
 
   /// Id of your watched videos.
   ///
@@ -178,6 +185,9 @@ class VideoShopFlutter extends StatefulWidget {
   /// if value is null or false, background is hidden
   final bool? enableBackgroundContent;
 
+  /// On/Off auto play
+  final bool? autoPlay;
+
   @override
   State<VideoShopFlutter> createState() => _VideoShopFlutterState();
 }
@@ -223,8 +233,10 @@ class _VideoShopFlutterState extends State<VideoShopFlutter> {
       children: List.generate(
         widget.listData.length,
         (index) => VideoPage(
+          autoPlay: widget.autoPlay ?? false,
           enableBackgroundContent: widget.enableBackgroundContent,
           updateLastSeenPage: widget.updateLastSeenPage,
+          onPlaying: widget.onPlaying,
           video: VideoModel.fromJson(widget.listData[index]),
           customVideoInfo: widget.customVideoInfo,
           followWidget: widget.followWidget,

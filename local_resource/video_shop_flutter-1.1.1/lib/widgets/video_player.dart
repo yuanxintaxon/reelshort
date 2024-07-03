@@ -3,8 +3,11 @@ import 'package:video_player/video_player.dart';
 
 class VideoPlayerApp extends StatefulWidget {
   /// Create video player.
-  const VideoPlayerApp({Key? key, required this.controller}) : super(key: key);
+  const VideoPlayerApp(
+      {Key? key, required this.controller, required this.onPlaying})
+      : super(key: key);
   final VideoPlayerController controller;
+  final Function()? onPlaying;
   @override
   State<VideoPlayerApp> createState() => _VideoPlayerAppState();
 }
@@ -15,17 +18,17 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
   @override
   void initState() {
     widget.controller.addListener(() {
-      if(widget.controller.value.isPlaying){
-        if(_showPause){
-          if(mounted){
+      if (widget.controller.value.isPlaying) {
+        if (_showPause) {
+          if (mounted) {
             setState(() {
               _showPause = false;
             });
           }
         }
-      }else{
-        if(!_showPause){
-          if(mounted){
+      } else {
+        if (!_showPause) {
+          if (mounted) {
             setState(() {
               _showPause = true;
             });
@@ -48,6 +51,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
           });
         } else {
           widget.controller.play();
+          widget.onPlaying?.call();
           setState(() {
             _showPause = false;
           });
@@ -56,7 +60,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       child: (widget.controller.value.aspectRatio < screenRatio)
           ? AbsorbPointer(
               child: Stack(
-                children: [
+              children: [
                 SizedBox.expand(
                   child: FittedBox(
                     fit: BoxFit.cover,
@@ -69,19 +73,18 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                 ),
                 if (_showPause) const PauseIcon(),
               ],
-            )
-            )
+            ))
           : AbsorbPointer(
               child: AspectRatio(
-          aspectRatio: widget.controller.value.aspectRatio,
-          child: Stack(
-            children: [
-              VideoPlayer(widget.controller),
-              if (_showPause) const PauseIcon(),
-            ],
-          ),
-        ),
-          ),
+                aspectRatio: widget.controller.value.aspectRatio,
+                child: Stack(
+                  children: [
+                    VideoPlayer(widget.controller),
+                    if (_showPause) const PauseIcon(),
+                  ],
+                ),
+              ),
+            ),
     );
   }
 }
