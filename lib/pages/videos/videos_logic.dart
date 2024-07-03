@@ -1,0 +1,130 @@
+import 'package:get/get.dart';
+import 'package:reelshort/routes/app_pages.dart';
+import 'package:resource_common/resource_common.dart';
+import 'dart:html' as html;
+
+class VideosLogic extends GetxController {
+  final data = <Map<String, dynamic>>[].obs;
+  List<String> videoWatched = [];
+
+  final autoPlay = false.obs;
+
+  @override
+  void onInit() {
+    final arguments = Get.rootDelegate.arguments();
+    autoPlay.value = arguments != null ? arguments['autoPlay'] : false;
+    super.onInit();
+  }
+
+  @override
+  void onReady() {
+    _initData();
+    super.onReady();
+  }
+
+  void _initData() async {
+    await LoadingView.singleton.wrap(
+      asyncFunction: () => _initAll(),
+    );
+  }
+
+  Future<void> _initAll() async {
+    // Start the two asynchronous operations concurrently
+    // Use await with Future.wait to wait for both operations to complete
+    await Future.wait([
+      _loadUserFullInfo(),
+    ]);
+  }
+
+  Future<void> _loadUserFullInfo() async {
+    // final result = await Apis.getUserFullInfo(
+    //     userIDList: [(await DataSp.getLoginCertificate())!.userID]);
+    // userInfo = result?.first;
+    final dummyData = <Map<String, dynamic>>[
+      {
+        'id': 1,
+        'url':
+            'https://chat-dev.ai1268.com/api/object/518789/c45c181a-9ec6-4a1c-8709-5513d342f96b.MOV',
+        'thumbnail':
+            'https://chat-dev.ai1268.com/api/object/518789/c5f0fd0c-d3e1-4ffb-a723-9196b1c8a8dc.png?type=image',
+        'video_title': 'title',
+        'description': 'description',
+        'likes': 5,
+        'liked': true,
+        'product_name': 'productName',
+        'product_permalink': 'productPermalink',
+        'stock_status': 'stockStatus',
+      },
+      {
+        'id': 2,
+        'url':
+            'https://chat-dev.ai1268.com/api/object/518789/cebc5109-c3f5-4b5e-84d8-21d39097b694.MOV',
+        'thumbnail':
+            'https://chat-dev.ai1268.com/api/object/518789/804c323e-276c-46f7-a62b-2c4d856fbe60.png?type=image',
+        'video_title': 'title',
+        'description': 'description',
+        'likes': 5,
+        'liked': true,
+        'product_name': 'productName',
+        'product_permalink': 'productPermalink',
+        'stock_status': 'stockStatus',
+      },
+      {
+        'id': 3,
+        'url':
+            'https://chat-dev.ai1268.com/api/object/518789/a0449e1b-87e2-4f3b-a0c3-67a80c3adaa1.MP4',
+        'thumbnail':
+            'https://chat-dev.ai1268.com/api/object/518789/4b070588-e93c-4d6b-b683-7bd36f9e717a.png?type=image',
+        'video_title': 'title',
+        'description': 'description',
+        'likes': 5,
+        'liked': true,
+        'product_name': 'productName',
+        'product_permalink': 'productPermalink',
+        'stock_status': 'stockStatus',
+      },
+      {
+        'id': 4,
+        'url':
+            'https://chat-dev.ai1268.com/api/object/518789/b3605055-070f-4b7f-b903-a4b7d2855871.MP4',
+        'thumbnail':
+            'https://chat-dev.ai1268.com/api/object/518789/12fb3972-9004-4722-8855-1babb63d834a.png?type=image',
+        'video_title': 'title',
+        'description': 'description',
+        'likes': 5,
+        'liked': true,
+        'product_name': 'productName',
+        'product_permalink': 'productPermalink',
+        'stock_status': 'stockStatus',
+      },
+      {
+        'id': 5,
+        'url':
+            'https://chat-dev.ai1268.com/api/object/518789/11cc4e24-423a-4394-a1c4-0eb1498de164.MP4',
+        'thumbnail':
+            'https://chat-dev.ai1268.com/api/object/518789/b6116fbc-3fa4-4feb-9787-aa31563f63bd.png?type=image',
+        'video_title': 'title',
+        'description': 'description',
+        'likes': 5,
+        'liked': true,
+        'product_name': 'productName',
+        'product_permalink': 'productPermalink',
+        'stock_status': 'stockStatus',
+      },
+    ];
+    data.assignAll(dummyData);
+    updateBrowserUrl();
+  }
+
+  void enableAutoPlay() {
+    if (autoPlay.value == false) {
+      autoPlay.value = true;
+    }
+  }
+
+  void updateBrowserUrl([int lastSeenPageIndex = 0]) async {
+    final video = data.elementAt(lastSeenPageIndex);
+    html.window.history
+        .replaceState(null, "", '${AppRoutes.videos}?id=${video["id"]}');
+  }
+}

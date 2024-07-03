@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import '../pages/home/home_binding.dart';
 import '../pages/home/home_view.dart';
+import '../pages/videos/videos_binding.dart';
+import '../pages/videos/videos_view.dart';
 import '../pages/welcome/welcome_binding.dart';
 import '../pages/welcome/welcome_view.dart';
 
@@ -17,7 +19,7 @@ class AppPages {
     bool preventDuplicates = true,
     bool fullscreenDialog = false,
     Duration? transitionDuration,
-    Transition transition = Transition.cupertino,
+    Transition transition = Transition.noTransition,
     List<GetMiddleware>? middlewares,
   }) =>
       GetPage(
@@ -55,6 +57,12 @@ class AppPages {
       name: AppRoutes.home,
       page: () => HomePage(),
       binding: HomeBinding(),
+      // middlewares: [AuthGuard(), ArgumentMiddleware()],
+    ),
+    _pageBuilder(
+      name: AppRoutes.videos,
+      page: () => VideosPage(),
+      binding: VideosBinding(),
       // middlewares: [AuthGuard(), ArgumentMiddleware()],
     ),
   ];
