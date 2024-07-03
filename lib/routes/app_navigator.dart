@@ -13,4 +13,6 @@ class AppNavigator {
   }
 
   static startWelcome() => Get.rootDelegate.toNamed(AppRoutes.welcome);
+  
+  static startVideos() => Get.rootDelegate.toNamed(AppRoutes.videos);
 }

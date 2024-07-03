@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:reelshort/routes/app_navigator.dart';
 import 'package:resource_common/resource_common.dart';
 
 import 'dart:html' as html;
@@ -7,7 +8,7 @@ class HomeLogic extends GetxController {
   final activeIndex = 0.obs;
   @override
   void onReady() {
-    autoJump();
+    // autoJump();
     super.onInit();
   }
 
@@ -19,4 +20,6 @@ class HomeLogic extends GetxController {
   void updateIndex(int index) {
     activeIndex.value = index;
   }
+
+  void startVideos() => AppNavigator.startVideos();
 }

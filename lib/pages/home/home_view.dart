@@ -122,9 +122,12 @@ class HomePage extends StatelessWidget {
         ],
       );
 
-  Widget _buildImageBannerTile(String url) => ImageUtil.networkImage(
-        url: url,
-        fit: BoxFit.cover,
+  Widget _buildImageBannerTile(String url) => GestureDetector(
+        onTap: logic.startVideos,
+        child: ImageUtil.networkImage(
+          url: url,
+          fit: BoxFit.cover,
+        ),
       );
 
   Widget _buildSectionView({required String label, required Widget child}) =>
@@ -238,39 +241,43 @@ class HomePage extends StatelessWidget {
       );
 
   Widget _buildDetailedInfoTile(String url, [double tileHeight = 132]) =>
-      SizedBox(
-        height: tileHeight,
-        width: double.infinity,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildVideoThumbnail(url: url),
-            Expanded(
-              child: Container(
-                padding: const EdgeInsets.only(bottom: 7, top: 7, left: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    "The Double life of a Billionaire Heiress".toText
-                      ..style = Styles.ts_FFFFFF_15sp_medium_sofia_pro,
-                    3.vSpace,
-                    "Love After Divource".toText
-                      ..style = Styles.ts_8070F80_13sp_semibold_sofia_pro,
-                    3.vSpace,
-                    Expanded(
-                      child:
-                          "After three years of marriage, CEO Wes Sterling is convinced that his wife Kira is a cheating gold-digger. Fed up with the CEO.brain cancer, Ryder Van Woodsen brutally dumps the love of his life"
-                              .toText
-                            ..style = Styles.ts_8070F80_12sp_semibold_sofia_pro
-                            ..maxLines = 3
-                            ..overflow = TextOverflow.ellipsis,
-                    ),
-                  ],
+      GestureDetector(
+        onTap: logic.startVideos,
+        child: SizedBox(
+          height: tileHeight,
+          width: double.infinity,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildVideoThumbnail(url: url),
+              Expanded(
+                child: Container(
+                  padding: const EdgeInsets.only(bottom: 7, top: 7, left: 15),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      "The Double life of a Billionaire Heiress".toText
+                        ..style = Styles.ts_FFFFFF_15sp_medium_sofia_pro,
+                      3.vSpace,
+                      "Love After Divource".toText
+                        ..style = Styles.ts_8070F80_13sp_semibold_sofia_pro,
+                      3.vSpace,
+                      Expanded(
+                        child:
+                            "After three years of marriage, CEO Wes Sterling is convinced that his wife Kira is a cheating gold-digger. Fed up with the CEO.brain cancer, Ryder Van Woodsen brutally dumps the love of his life"
+                                .toText
+                              ..style =
+                                  Styles.ts_8070F80_12sp_semibold_sofia_pro
+                              ..maxLines = 3
+                              ..overflow = TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       );
 
@@ -302,40 +309,43 @@ class HomePage extends StatelessWidget {
     double listHeight = 250,
     double tileWidth = 136,
   ]) =>
-      SizedBox(
-        height: listHeight,
-        width: tileWidth,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildVideoThumbnail(
-              url: url,
-              showLengthTime: false,
-              showPreviewIcon: true,
-              videoProgress: 0.5,
-            ),
-            7.vSpace,
-            "The Double Life of a Billionair Heiress".toText
-              ..style = Styles.ts_FFFFFF_13sp_semibold_sofia_pro
-              ..maxLines = 2
-              ..overflow = TextOverflow.ellipsis,
-            4.vSpace,
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                      text: "EP.${0}",
-                      style: Styles.ts_D5495B_12sp_black_sofia_pro),
-                  TextSpan(
-                      text: " / ",
-                      style: Styles.ts_8070F80_12sp_black_sofia_pro),
-                  TextSpan(
-                      text: "EP.${83}",
-                      style: Styles.ts_8070F80_12sp_black_sofia_pro)
-                ],
+      GestureDetector(
+        onTap: logic.startVideos,
+        child: SizedBox(
+          height: listHeight,
+          width: tileWidth,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildVideoThumbnail(
+                url: url,
+                showLengthTime: false,
+                showPreviewIcon: true,
+                videoProgress: 0.5,
               ),
-            ),
-          ],
+              7.vSpace,
+              "The Double Life of a Billionair Heiress".toText
+                ..style = Styles.ts_FFFFFF_13sp_semibold_sofia_pro
+                ..maxLines = 2
+                ..overflow = TextOverflow.ellipsis,
+              4.vSpace,
+              RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                        text: "EP.${0}",
+                        style: Styles.ts_D5495B_12sp_black_sofia_pro),
+                    TextSpan(
+                        text: " / ",
+                        style: Styles.ts_8070F80_12sp_black_sofia_pro),
+                    TextSpan(
+                        text: "EP.${83}",
+                        style: Styles.ts_8070F80_12sp_black_sofia_pro)
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       );
 
@@ -375,9 +385,12 @@ class HomePage extends StatelessWidget {
           ..overflow = TextOverflow.ellipsis,
       ],
     );
-    return listHeight != null
-        ? SizedBox(height: listHeight, width: tileWidth, child: infoTile)
-        : infoTile;
+    return GestureDetector(
+      onTap: logic.startVideos,
+      child: listHeight != null
+          ? SizedBox(height: listHeight, width: tileWidth, child: infoTile)
+          : infoTile,
+    );
   }
 
   Widget _buildTopPickView([double listHeight = 240]) => _buildSectionView(
