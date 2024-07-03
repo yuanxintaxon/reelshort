@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resource_common/resource_common.dart';
-import 'package:video_shop_flutter/video_shop_flutter.dart';
+import 'package:short_video_scroller/short_video_scroller.dart';
 import 'videos_logic.dart';
 
 class VideosPage extends StatelessWidget {
@@ -15,7 +15,7 @@ class VideosPage extends StatelessWidget {
       body: Obx(
         () => Stack(
           children: [
-            VideoShopFlutter(
+            ShortVideoScroller(
               // Called every time video page is changed.
               updateLastSeenPage: (lastSeenPageIndex) {
                 // logic.updateBrowserUrl(lastSeenPageIndex);

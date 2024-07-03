@@ -33,14 +33,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
-  auto_orientation:
-    dependency: transitive
-    description:
-      name: auto_orientation
-      sha256: cd56bb59b36fa54cc28ee254bc600524f022a4862f31d5ab20abd7bb1c54e678
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.3.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -153,14 +145,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
-  dbus:
-    dependency: transitive
-    description:
-      name: dbus
-      sha256: "365c771ac3b0e58845f39ec6deebc76e3276aa9922b0cc60840712094d9047ac"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.7.10"
   decimal:
     dependency: transitive
     description:
@@ -845,21 +829,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-  preload_page_view:
-    dependency: transitive
-    description:
-      name: preload_page_view
-      sha256: "488a10c158c5c2e9ba9d77e5dbc09b1e49e37a20df2301e5ba02992eac802b7a"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.2.0"
-  preload_video:
-    dependency: "direct main"
-    description:
-      path: "local_resource/preload_video-0.0.7"
-      relative: true
-    source: path
-    version: "0.0.7"
   pull_to_refresh:
     dependency: transitive
     description:
@@ -947,6 +916,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.2"
+  short_video_scroller:
+    dependency: "direct main"
+    description:
+      path: "local_resource/short_video_scroller"
+      relative: true
+    source: path
+    version: "1.1.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -1192,13 +1168,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.1"
-  video_shop_flutter:
-    dependency: "direct main"
-    description:
-      path: "local_resource/video_shop_flutter-1.1.1"
-      relative: true
-    source: path
-    version: "1.1.1"
   visibility_detector:
     dependency: transitive
     description:
@@ -1215,22 +1184,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "14.2.1"
-  wakelock_plus:
-    dependency: transitive
-    description:
-      name: wakelock_plus
-      sha256: "14758533319a462ffb5aa3b7ddb198e59b29ac3b02da14173a1715d65d4e6e68"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.5"
-  wakelock_plus_platform_interface:
-    dependency: transitive
-    description:
-      name: wakelock_plus_platform_interface
-      sha256: "422d1cdbb448079a8a62a5a770b69baa489f8f7ca21aef47800c726d404f9d16"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.2.1"
   web:
     dependency: transitive
     description:
