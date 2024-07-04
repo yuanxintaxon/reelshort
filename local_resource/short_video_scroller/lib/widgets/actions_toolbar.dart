@@ -10,34 +10,25 @@ class ActionsToolbar extends StatelessWidget {
   final Widget Function(VideoModel? video)? shareWidget;
   final Widget Function(VideoModel? video)? buyWidget;
   final Widget Function(VideoModel? video, int index)? viewWidget;
-  final bool? enableBackgroundContent;
   final int index;
 
   /// Create video actions bar.
-  const ActionsToolbar(
-      {super.key,
-      required this.video,
-      required this.followWidget,
-      required this.likeWidget,
-      required this.commentWidget,
-      required this.shareWidget,
-      required this.buyWidget,
-      required this.viewWidget,
-      required this.index,
-      this.enableBackgroundContent});
+  const ActionsToolbar({
+    super.key,
+    required this.video,
+    required this.followWidget,
+    required this.likeWidget,
+    required this.commentWidget,
+    required this.shareWidget,
+    required this.buyWidget,
+    required this.viewWidget,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: (enableBackgroundContent != null && enableBackgroundContent!)
-          ? BoxDecoration(
-              color: Colors.black.withOpacity(0.05),
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(5),
-                bottomLeft: Radius.circular(5),
-              ),
-            )
-          : null,
+      decoration: null,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

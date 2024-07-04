@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:resource_common/resource_common.dart';
 import 'package:video_player/video_player.dart';
 
@@ -36,6 +35,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
   bool showOnlyVideo = false;
   Timer? _hideTimer;
   final int secToHideFloatingWidgets = 1;
+  final cinemaMode = true;
 
   @override
   void initState() {
@@ -121,36 +121,32 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     double screenRatio = MediaQuery.of(context).size.aspectRatio;
     return Stack(
       children: [
-        (_controller.value.aspectRatio < screenRatio)
-            ? Stack(
-                children: [
-                  SizedBox.expand(
-                    child: FittedBox(
-                      fit: BoxFit.cover,
-                      child: SizedBox(
-                        width: _controller.value.size.width,
-                        height: _controller.value.size.height,
-                        child: _buildVideoPlayer(),
-                      ),
-                    ),
-                  ),
-                  if (_showPause) _buildPauseIcon(),
-                ],
-              )
-            : AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: Stack(
-                  children: [
-                    _buildVideoPlayer(),
-                    if (_showPause) _buildPauseIcon(),
-                  ],
-                ),
-              ),
+        _buildVideoFullScreen(screenRatio),
         Align(
           alignment: Alignment.centerRight,
           child: FadeOut(
             animate: showOnlyVideo ? true : false,
             child: widget.actionToolBar,
+          ),
+        ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: FadeOut(
+            animate: showOnlyVideo ? true : false,
+            child: Container(
+              height: 44,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    Styles.c_000000_opacity0,
+                    Styles.c_000000_opacity75,
+                  ],
+                  stops: const [0.0, 1.0],
+                ),
+              ),
+            ),
           ),
         ),
         Align(
@@ -170,6 +166,33 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       ],
     );
   }
+
+  Widget _buildVideoFullScreen(double screenRatio) =>
+      (_controller.value.aspectRatio < screenRatio)
+          ? Stack(
+              children: [
+                SizedBox.expand(
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: SizedBox(
+                      width: _controller.value.size.width,
+                      height: _controller.value.size.height,
+                      child: _buildVideoPlayer(),
+                    ),
+                  ),
+                ),
+                if (_showPause) _buildPauseIcon(),
+              ],
+            )
+          : AspectRatio(
+              aspectRatio: _controller.value.aspectRatio,
+              child: Stack(
+                children: [
+                  _buildVideoPlayer(),
+                  if (_showPause) _buildPauseIcon(),
+                ],
+              ),
+            );
 
   Widget _buildPauseIcon() => Align(
         alignment: Alignment.center,
@@ -194,7 +217,12 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
         behavior: HitTestBehavior.deferToChild,
         onTap: _controller.value.isPlaying ? toggleShowOnlyVideo : null,
         onDoubleTap: togglePlayVideo,
-        child: AbsorbPointer(child: VideoPlayer(_controller)),
+        child: AbsorbPointer(
+            child: ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(cinemaMode ? 0.15 : 0),
+                    BlendMode.srcOver),
+                child: VideoPlayer(_controller))),
       );
 
   Widget _buildVideoControlPanel() => Stack(

@@ -1,32 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resource_common/resource_common.dart';
-import 'package:short_video_scroller/page/page.dart';
 import 'package:short_video_scroller/short_video_scroller.dart';
-
-final List<Color> gradientBackground = [
-  const Color(0xff000000).withOpacity(0.9),
-  const Color(0xff000000).withOpacity(0.8),
-  const Color(0xff000000).withOpacity(0.7),
-  const Color(0xff000000).withOpacity(0.6),
-  const Color(0xff000000).withOpacity(0.5),
-  const Color(0xff000000).withOpacity(0.4),
-  const Color(0xff000000).withOpacity(0.3),
-  const Color(0xff000000).withOpacity(0.2),
-  const Color(0xff000000).withOpacity(0.1),
-  const Color(0xff000000).withOpacity(0.0),
-];
-const List<double> stopGradient = [
-  0.1,
-  0.2,
-  0.3,
-  0.4,
-  0.5,
-  0.6,
-  0.7,
-  0.8,
-  0.9,
-  1.0,
-];
 
 class VideoPage extends StatefulWidget {
   /// Create video page view.
@@ -49,7 +23,6 @@ class VideoPage extends StatefulWidget {
     required this.updateLastSeenPage,
     required this.onPlaying,
     required this.onBack,
-    this.enableBackgroundContent = false,
     this.autoPlay = false,
   }) : super(key: key);
   final VideoModel video;
@@ -70,7 +43,6 @@ class VideoPage extends StatefulWidget {
   final Function(int lastSeenPage)? updateLastSeenPage;
   final Function()? onPlaying;
   final Function()? onBack;
-  final bool? enableBackgroundContent;
   final bool autoPlay;
 
   @override
@@ -129,7 +101,6 @@ class _VideoPageState extends State<VideoPage>
       );
 
   Widget _buildActionToolBar() => ActionsToolbar(
-        enableBackgroundContent: widget.enableBackgroundContent,
         video: widget.video,
         followWidget: widget.followWidget,
         likeWidget: widget.likeWidget,

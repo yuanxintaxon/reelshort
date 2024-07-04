@@ -249,7 +249,6 @@ class _ShortVideoScrollerState extends State<ShortVideoScroller> {
         widget.listData.length,
         (index) => VideoPage(
           autoPlay: widget.autoPlay ?? false,
-          enableBackgroundContent: widget.enableBackgroundContent,
           updateLastSeenPage: widget.updateLastSeenPage,
           onPlaying: widget.onPlaying,
           onBack: widget.onBack,
