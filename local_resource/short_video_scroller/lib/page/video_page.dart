@@ -79,8 +79,10 @@ class VideoPage extends StatefulWidget {
 
 class _VideoPageState extends State<VideoPage>
     with AutomaticKeepAliveClientMixin<VideoPage> {
+  bool showOnlyVideo = false;
+
   @override
-  bool get wantKeepAlive => true;
+  bool get wantKeepAlive => false;
 
   @override
   Widget build(BuildContext context) {
@@ -90,15 +92,19 @@ class _VideoPageState extends State<VideoPage>
       child: Stack(
         children: [
           // Video.
-          Align(
-            alignment: Alignment.center,
-            child: VideoItem(
-              video: widget.video,
-              videoWatched: widget.videoWatched,
-              index: widget.index,
-              updateLastSeenPage: widget.updateLastSeenPage,
-              onPlaying: widget.onPlaying,
-              autoPlay: widget.autoPlay,
+          AbsorbPointer(
+            absorbing: true,
+            child: Align(
+              alignment: Alignment.center,
+              child: VideoItem(
+                video: widget.video,
+                videoWatched: widget.videoWatched,
+                index: widget.index,
+                updateLastSeenPage: widget.updateLastSeenPage,
+                onPlaying: widget.onPlaying,
+                autoPlay: widget.autoPlay,
+                showOnlyVideo: showOnlyVideo,
+              ),
             ),
           ),
           // Background content.

@@ -50,7 +50,7 @@ class HomePage extends StatelessWidget {
               40.vSpace,
               if (true) ...[
                 StrRes.slidToBottomHint.toText
-                  ..style = Styles.ts_8070F80_12sp_bold_sofia_pro,
+                  ..style = Styles.ts_807F80_12sp_bold_sofia_pro,
                 80.vSpace,
               ]
             ],
@@ -261,14 +261,14 @@ class HomePage extends StatelessWidget {
                         ..style = Styles.ts_FFFFFF_15sp_medium_sofia_pro,
                       3.vSpace,
                       "Love After Divource".toText
-                        ..style = Styles.ts_8070F80_13sp_semibold_sofia_pro,
+                        ..style = Styles.ts_807F80_13sp_semibold_sofia_pro,
                       3.vSpace,
                       Expanded(
                         child:
                             "After three years of marriage, CEO Wes Sterling is convinced that his wife Kira is a cheating gold-digger. Fed up with the CEO.brain cancer, Ryder Van Woodsen brutally dumps the love of his life"
                                 .toText
                               ..style =
-                                  Styles.ts_8070F80_12sp_semibold_sofia_pro
+                                  Styles.ts_807F80_12sp_semibold_sofia_pro
                               ..maxLines = 3
                               ..overflow = TextOverflow.ellipsis,
                       ),
@@ -337,10 +337,10 @@ class HomePage extends StatelessWidget {
                         style: Styles.ts_D5495B_12sp_black_sofia_pro),
                     TextSpan(
                         text: " / ",
-                        style: Styles.ts_8070F80_12sp_black_sofia_pro),
+                        style: Styles.ts_807F80_12sp_black_sofia_pro),
                     TextSpan(
                         text: "EP.${83}",
-                        style: Styles.ts_8070F80_12sp_black_sofia_pro)
+                        style: Styles.ts_807F80_12sp_black_sofia_pro)
                   ],
                 ),
               ),

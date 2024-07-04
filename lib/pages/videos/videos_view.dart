@@ -38,7 +38,7 @@ class VideosPage extends StatelessWidget {
                 // Watched videos, it's updated every time new video is watched.
                 videoWatched: logic.videoWatched,
                 pageSize: 4,
-                enableBackgroundContent: true,
+                enableBackgroundContent: false,
                 // Load more video data.
                 loadMore: (page, pageSize) async {
                   // Just for test.

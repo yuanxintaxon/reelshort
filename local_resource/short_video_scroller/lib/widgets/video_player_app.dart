@@ -1,0 +1,329 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:resource_common/resource_common.dart';
+import 'package:video_player/video_player.dart';
+
+class VideoPlayerApp extends StatefulWidget {
+  /// Create video player.
+  const VideoPlayerApp({
+    Key? key,
+    required this.controller,
+    required this.autoPlay,
+    required this.showOnlyVideo,
+    required this.onPlaying,
+  }) : super(key: key);
+  final VideoPlayerController controller;
+  final bool autoPlay;
+  final bool showOnlyVideo;
+  final Function()? onPlaying;
+  @override
+  State<VideoPlayerApp> createState() => _VideoPlayerAppState();
+}
+
+class _VideoPlayerAppState extends State<VideoPlayerApp> {
+  late VideoPlayerController _controller;
+  bool _showPause = false;
+  Duration minDuration = Duration.zero,
+      maxDuration = Duration.zero,
+      currDuration = Duration.zero;
+
+  bool showOnlyVideo = false;
+
+  @override
+  void initState() {
+    _controller = widget.controller;
+
+    // init durations
+    currDuration = _controller.value.position;
+    maxDuration = _controller.value.duration;
+
+    // listener for live UI update
+    _controller.addListener(handleLiveUIUpdate);
+    super.initState();
+  }
+
+  void handleLiveUIUpdate() {
+    // update UI state of playing/pause
+    if (_controller.value.isPlaying) {
+      if (_showPause) {
+        _showPause = false;
+      }
+    } else {
+      if (!_showPause) {
+        _showPause = true;
+      }
+    }
+    // update UI for current duration position
+    currDuration = _controller.value.position;
+
+    if (!mounted) return;
+    setState(() {});
+  }
+
+  void toggleShowOnlyVideo() {
+    Logger.print("creturn toggle");
+    showOnlyVideo = !showOnlyVideo;
+    if (!mounted) return;
+    setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    double screenRatio = MediaQuery.of(context).size.aspectRatio;
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: toggleShowOnlyVideo,
+      child: (_controller.value.aspectRatio < screenRatio)
+          ? AbsorbPointer(
+              child: Stack(
+                children: [
+                  SizedBox.expand(
+                    child: FittedBox(
+                      fit: BoxFit.cover,
+                      child: SizedBox(
+                        width: _controller.value.size.width,
+                        height: _controller.value.size.height,
+                        child: _buildVideoPlayer(),
+                      ),
+                    ),
+                  ),
+                  if (_showPause) _buildPauseIcon(),
+                ],
+              ),
+            )
+          : AbsorbPointer(
+              child: AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: Stack(
+                  children: [
+                    _buildVideoPlayer(),
+                    if (_showPause) _buildPauseIcon(),
+                  ],
+                ),
+              ),
+            ),
+    );
+  }
+
+  Widget _buildPauseIcon() => Align(
+        alignment: Alignment.center,
+        child: GestureDetector(
+          onTap: () {
+            if (_controller.value.isPlaying) {
+              _controller.pause();
+              setState(() {
+                _showPause = true;
+              });
+            } else {
+              _controller.play();
+              widget.onPlaying?.call();
+              setState(() {
+                _showPause = false;
+              });
+            }
+          },
+          child: Container(
+            width: 40,
+            height: 40,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.4),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: Icon(Icons.play_arrow_rounded,
+                color: Colors.white.withOpacity(1.0), size: 30),
+          ),
+        ),
+      );
+
+  Widget _buildVideoPlayer() => Stack(
+        children: [
+          VideoPlayer(_controller),
+          if (!widget.showOnlyVideo)
+            Positioned(
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: _buildVideoControlPanel(),
+            ),
+        ],
+      );
+
+  Widget _buildVideoControlPanel() => Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.bottomCenter,
+        children: [
+          Container(
+            height: 49,
+            width: double.infinity,
+            color: Colors.transparent,
+          ),
+          Container(
+            color: Styles.c_000000,
+            height: 44,
+            width: double.infinity,
+            padding: const EdgeInsets.only(left: 8, right: 18, top: 4),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                GestureDetector(
+                  behavior: HitTestBehavior.translucent,
+                  onTap: _controller.value.isPlaying
+                      ? _controller.pause
+                      : _controller.play,
+                  child: Icon(
+                      _controller.value.isPlaying
+                          ? Icons.pause_rounded
+                          : Icons.play_arrow_rounded,
+                      color: _controller.value.isPlaying
+                          ? Styles.c_9B9B9B
+                          : Styles.c_FFFFFF,
+                      size: 24),
+                ),
+                8.hSpace,
+                RichText(
+                  text: TextSpan(
+                    style: TextStyle(
+                      color: Styles.c_807F80,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: IMUtils.seconds2HMS(currDuration.inSeconds),
+                        style: TextStyle(
+                          color: Styles.c_FFFFFF,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const TextSpan(text: " / "),
+                      TextSpan(
+                          text: IMUtils.seconds2HMS(maxDuration.inSeconds)),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 1,
+            left: 0,
+            right: 0,
+            child: _buildProgressSlider(),
+          ),
+        ],
+      );
+
+  Widget _buildProgressSlider() => SliderTheme(
+        data: SliderTheme.of(context).copyWith(
+          thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 3.0),
+          overlayShape: SliderComponentShape.noOverlay,
+          trackShape: CustomSliderTrackShape(
+              activeTrackHeight: 1.5, inactiveTrackHeight: 1.5),
+        ),
+        child: Slider(
+          activeColor: Styles.c_EA3E54,
+          inactiveColor: Styles.c_FFFFFF,
+          thumbColor: Styles.c_EA3E54,
+          value: _controller.value.position.inSeconds.toDouble(),
+          min: minDuration.inSeconds.toDouble(),
+          max: maxDuration.inSeconds.toDouble(),
+          onChanged: (value) async {
+            final durationPos = Duration(seconds: value.toInt());
+            _controller.seekTo(durationPos);
+            if (!mounted) return;
+            setState(() {});
+          },
+          onChangeStart: (value) async {
+            // if (status == VeryAudioPlayerStatus.playing) {
+            //   await pauseAudio(updateStatus: false);
+            // }
+          },
+          onChangeEnd: (value) async {
+            // if (status == VeryAudioPlayerStatus.playing) {
+            //   await playAudio(updateStatus: false);
+            // }
+          },
+        ),
+      );
+}
+
+class CustomSliderTrackShape extends SliderTrackShape {
+  final double activeTrackHeight;
+  final double inactiveTrackHeight;
+
+  CustomSliderTrackShape(
+      {this.activeTrackHeight = 1.5, this.inactiveTrackHeight = 1.5});
+
+  @override
+  void paint(
+    PaintingContext context,
+    Offset offset, {
+    required RenderBox parentBox,
+    required SliderThemeData sliderTheme,
+    required Animation<double> enableAnimation,
+    required Offset thumbCenter,
+    Offset? secondaryOffset,
+    bool isEnabled = false,
+    bool isDiscrete = false,
+    required TextDirection textDirection,
+  }) {
+    final Paint activePaint = Paint()
+      ..color = sliderTheme.activeTrackColor ?? Colors.black;
+    final Paint inactivePaint = Paint()
+      ..color = sliderTheme.inactiveTrackColor ?? Colors.grey;
+
+    final double activeTrackRadius = activeTrackHeight / 2;
+    final double inactiveTrackRadius = inactiveTrackHeight / 2;
+
+    final RRect activeRRect = RRect.fromLTRBR(
+      offset.dx,
+      thumbCenter.dy - activeTrackRadius,
+      thumbCenter.dx,
+      thumbCenter.dy + activeTrackRadius,
+      Radius.circular(activeTrackRadius),
+    );
+
+    final RRect inactiveRRect = RRect.fromLTRBR(
+      thumbCenter.dx,
+      thumbCenter.dy - inactiveTrackRadius,
+      parentBox.size.width - offset.dx,
+      thumbCenter.dy + inactiveTrackRadius,
+      Radius.circular(inactiveTrackRadius),
+    );
+
+    context.canvas.drawRRect(activeRRect, activePaint);
+    context.canvas.drawRRect(inactiveRRect, inactivePaint);
+
+    if (secondaryOffset != null) {
+      final Paint secondaryPaint = Paint()
+        ..color = sliderTheme.secondaryActiveTrackColor ?? Colors.black87;
+      final RRect secondaryRRect = RRect.fromLTRBR(
+        thumbCenter.dx,
+        thumbCenter.dy - activeTrackRadius,
+        secondaryOffset.dx,
+        thumbCenter.dy + activeTrackRadius,
+        Radius.circular(activeTrackRadius),
+      );
+      context.canvas.drawRRect(secondaryRRect, secondaryPaint);
+    }
+  }
+
+  @override
+  Rect getPreferredRect({
+    required RenderBox parentBox,
+    Offset offset = Offset.zero,
+    required SliderThemeData sliderTheme,
+    bool isEnabled = false,
+    bool isDiscrete = false,
+  }) {
+    final double trackHeight = activeTrackHeight;
+    final double trackLeft = offset.dx;
+    final double trackTop =
+        offset.dy + (parentBox.size.height - trackHeight) / 2;
+    final double trackWidth = parentBox.size.width - 2 * offset.dx;
+    return Rect.fromLTWH(trackLeft, trackTop, trackWidth, trackHeight);
+  }
+}

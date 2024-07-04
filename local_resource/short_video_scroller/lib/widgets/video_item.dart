@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:short_video_scroller/model/video_model.dart';
-import 'package:short_video_scroller/widgets/video_player.dart';
+import 'package:short_video_scroller/widgets/video_player_app.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 class VideoItem extends StatefulWidget {
@@ -13,6 +13,7 @@ class VideoItem extends StatefulWidget {
     required this.updateLastSeenPage,
     required this.onPlaying,
     required this.autoPlay,
+    required this.showOnlyVideo,
     required this.index,
   }) : super(key: key);
   final VideoModel video;
@@ -20,6 +21,7 @@ class VideoItem extends StatefulWidget {
   final Function(int lastSeenPage)? updateLastSeenPage;
   final Function()? onPlaying;
   final bool autoPlay;
+  final bool showOnlyVideo;
   final int index;
   @override
   State<VideoItem> createState() => _VideoItemState();
@@ -80,6 +82,7 @@ class _VideoItemState extends State<VideoItem> {
             child: VideoPlayerApp(
               controller: _videoController!,
               autoPlay: widget.autoPlay,
+              showOnlyVideo: widget.showOnlyVideo,
               onPlaying: widget.onPlaying,
             ),
           )
