@@ -60,6 +60,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     } else {
       if (!_showPause) {
         _showPause = true;
+        toggleShowOnlyVideo(show: false);
       }
     }
     // update UI for current duration position
@@ -92,6 +93,8 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       if (show == true) {
         if (showOnlyVideo || !_controller.value.isPlaying) return;
         showOnlyVideo = true;
+      } else {
+        showOnlyVideo = false;
       }
     } else {
       showOnlyVideo = !showOnlyVideo;
