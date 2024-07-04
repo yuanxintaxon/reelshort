@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,13 +12,16 @@ class VideoPlayerApp extends StatefulWidget {
     Key? key,
     required this.controller,
     required this.autoPlay,
-    required this.showOnlyVideo,
     required this.onPlaying,
+    required this.appBar,
+    required this.actionToolBar,
   }) : super(key: key);
   final VideoPlayerController controller;
   final bool autoPlay;
-  final bool showOnlyVideo;
   final Function()? onPlaying;
+  final Widget appBar;
+  final Widget actionToolBar;
+
   @override
   State<VideoPlayerApp> createState() => _VideoPlayerAppState();
 }
@@ -29,6 +34,8 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       currDuration = Duration.zero;
 
   bool showOnlyVideo = false;
+  Timer? _hideTimer;
+  final int secToHideFloatingWidgets = 1;
 
   @override
   void initState() {
@@ -46,6 +53,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
   void handleLiveUIUpdate() {
     // update UI state of playing/pause
     if (_controller.value.isPlaying) {
+      hideFloatingWidgets();
       if (_showPause) {
         _showPause = false;
       }
@@ -61,22 +69,60 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     setState(() {});
   }
 
-  void toggleShowOnlyVideo() {
-    Logger.print("creturn toggle");
-    showOnlyVideo = !showOnlyVideo;
+  void hideFloatingWidgets() {
+    if (showOnlyVideo || !_controller.value.isPlaying) return;
+    if (_hideTimer != null) return;
+    _hideTimer =
+        Timer.periodic(const Duration(milliseconds: 3000), (Timer timer) {
+      if (timer.tick >= secToHideFloatingWidgets) {
+        stopHideTimer();
+        toggleShowOnlyVideo(show: true);
+        return;
+      }
+    });
+  }
+
+  void stopHideTimer() {
+    _hideTimer?.cancel();
+    _hideTimer = null;
+  }
+
+  void toggleShowOnlyVideo({bool? show}) {
+    if (show != null) {
+      if (show == true) {
+        if (showOnlyVideo || !_controller.value.isPlaying) return;
+        showOnlyVideo = true;
+      }
+    } else {
+      showOnlyVideo = !showOnlyVideo;
+    }
+
     if (!mounted) return;
     setState(() {});
+  }
+
+  void togglePlayVideo() {
+    if (_controller.value.isPlaying) {
+      _controller.pause();
+      setState(() {
+        _showPause = true;
+      });
+    } else {
+      _controller.play();
+      widget.onPlaying?.call();
+      setState(() {
+        _showPause = false;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     double screenRatio = MediaQuery.of(context).size.aspectRatio;
-    return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: toggleShowOnlyVideo,
-      child: (_controller.value.aspectRatio < screenRatio)
-          ? AbsorbPointer(
-              child: Stack(
+    return Stack(
+      children: [
+        (_controller.value.aspectRatio < screenRatio)
+            ? Stack(
                 children: [
                   SizedBox.expand(
                     child: FittedBox(
@@ -90,10 +136,8 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                   ),
                   if (_showPause) _buildPauseIcon(),
                 ],
-              ),
-            )
-          : AbsorbPointer(
-              child: AspectRatio(
+              )
+            : AspectRatio(
                 aspectRatio: _controller.value.aspectRatio,
                 child: Stack(
                   children: [
@@ -102,27 +146,36 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                   ],
                 ),
               ),
-            ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: FadeOut(
+            animate: showOnlyVideo ? true : false,
+            child: widget.actionToolBar,
+          ),
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: FadeOut(
+            animate: showOnlyVideo ? true : false,
+            child: widget.appBar,
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: FadeOut(
+            animate: showOnlyVideo ? true : false,
+            child: _buildVideoControlPanel(),
+          ),
+        ),
+      ],
     );
   }
 
   Widget _buildPauseIcon() => Align(
         alignment: Alignment.center,
         child: GestureDetector(
-          onTap: () {
-            if (_controller.value.isPlaying) {
-              _controller.pause();
-              setState(() {
-                _showPause = true;
-              });
-            } else {
-              _controller.play();
-              widget.onPlaying?.call();
-              setState(() {
-                _showPause = false;
-              });
-            }
-          },
+          behavior: HitTestBehavior.translucent,
+          onTap: togglePlayVideo,
           child: Container(
             width: 40,
             height: 40,
@@ -137,17 +190,11 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
         ),
       );
 
-  Widget _buildVideoPlayer() => Stack(
-        children: [
-          VideoPlayer(_controller),
-          if (!widget.showOnlyVideo)
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: _buildVideoControlPanel(),
-            ),
-        ],
+  Widget _buildVideoPlayer() => GestureDetector(
+        behavior: HitTestBehavior.deferToChild,
+        onTap: _controller.value.isPlaying ? toggleShowOnlyVideo : null,
+        onDoubleTap: togglePlayVideo,
+        child: AbsorbPointer(child: VideoPlayer(_controller)),
       );
 
   Widget _buildVideoControlPanel() => Stack(

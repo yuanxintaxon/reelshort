@@ -79,8 +79,6 @@ class VideoPage extends StatefulWidget {
 
 class _VideoPageState extends State<VideoPage>
     with AutomaticKeepAliveClientMixin<VideoPage> {
-  bool showOnlyVideo = false;
-
   @override
   bool get wantKeepAlive => false;
 
@@ -89,108 +87,56 @@ class _VideoPageState extends State<VideoPage>
     super.build(context);
     return Container(
       color: Colors.black,
-      child: Stack(
-        children: [
-          // Video.
-          AbsorbPointer(
-            absorbing: true,
-            child: Align(
-              alignment: Alignment.center,
-              child: VideoItem(
-                video: widget.video,
-                videoWatched: widget.videoWatched,
-                index: widget.index,
-                updateLastSeenPage: widget.updateLastSeenPage,
-                onPlaying: widget.onPlaying,
-                autoPlay: widget.autoPlay,
-                showOnlyVideo: showOnlyVideo,
-              ),
-            ),
-          ),
-          // Background content.
-          if (widget.enableBackgroundContent != null &&
-              widget.enableBackgroundContent!)
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment.topCenter,
-                    stops: stopGradient,
-                    colors: gradientBackground,
-                  ),
-                ),
-              ),
-            ),
-          // Video info______________.
-          Align(
-            alignment: widget.informationAlign ?? Alignment.bottomLeft,
-            child: Padding(
-              padding: widget.informationPadding ??
-                  const EdgeInsets.only(left: 20, bottom: 70),
-              child: (widget.customVideoInfo != null)
-                  ? widget.customVideoInfo!(widget.video)
-                  : VideoInformation(
-                      widget.video.user ?? "",
-                      widget.video.videoTitle ?? "",
-                      widget.video.videoDescription ?? "",
-                    ),
-            ),
-          ),
-          // Video actions______________.
-          Align(
-            alignment: widget.actionsAlign ?? Alignment.bottomRight,
-            child: Padding(
-              padding:
-                  widget.actionsPadding ?? const EdgeInsets.only(bottom: 70),
-              child: ActionsToolbar(
-                enableBackgroundContent: widget.enableBackgroundContent,
-                video: widget.video,
-                followWidget: widget.followWidget,
-                likeWidget: widget.likeWidget,
-                commentWidget: widget.commentWidget,
-                shareWidget: widget.shareWidget,
-                buyWidget: widget.buyWidget,
-                viewWidget: widget.viewWidget,
-                index: widget.index,
-              ),
-            ),
-          ),
-          // App bar
-          Align(
-            alignment: Alignment.topLeft,
-            child: GestureDetector(
-              behavior: HitTestBehavior.translucent,
-              onTap: widget.onBack,
-              child: Container(
-                height: 44,
-                padding: const EdgeInsets.only(left: 10),
-                child: IntrinsicWidth(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      ImageRes.leftChevronWhite.toImage
-                        ..width = 22
-                        ..height = 22,
-                      1.hSpace,
-                      Flexible(
-                        child: "${widget.video.videoTitle}".toText
-                          ..style = Styles.ts_FFFFFF_15sp_regular_sofia_pro,
-                      ),
-                      13.hSpace,
-                      "${widget.video.currentEp}/${widget.video.totalEp}".toText
-                        ..style = Styles.ts_FFFFFF_15sp_regular_sofia_pro,
-                      18.hSpace,
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+      child: VideoItem(
+        video: widget.video,
+        videoWatched: widget.videoWatched,
+        index: widget.index,
+        updateLastSeenPage: widget.updateLastSeenPage,
+        onPlaying: widget.onPlaying,
+        autoPlay: widget.autoPlay,
+        appBar: _buildAppBar(),
+        actionToolBar: _buildActionToolBar(),
       ),
     );
   }
+
+  Widget _buildAppBar() => GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: widget.onBack,
+        child: Container(
+          height: 44,
+          padding: const EdgeInsets.only(left: 10),
+          child: IntrinsicWidth(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ImageRes.leftChevronWhite.toImage
+                  ..width = 22
+                  ..height = 22,
+                1.hSpace,
+                Flexible(
+                  child: "${widget.video.videoTitle}".toText
+                    ..style = Styles.ts_FFFFFF_15sp_regular_sofia_pro,
+                ),
+                13.hSpace,
+                "${widget.video.currentEp}/${widget.video.totalEp}".toText
+                  ..style = Styles.ts_FFFFFF_15sp_regular_sofia_pro,
+                18.hSpace,
+              ],
+            ),
+          ),
+        ),
+      );
+
+  Widget _buildActionToolBar() => ActionsToolbar(
+        enableBackgroundContent: widget.enableBackgroundContent,
+        video: widget.video,
+        followWidget: widget.followWidget,
+        likeWidget: widget.likeWidget,
+        commentWidget: widget.commentWidget,
+        shareWidget: widget.shareWidget,
+        buyWidget: widget.buyWidget,
+        viewWidget: widget.viewWidget,
+        index: widget.index,
+      );
 }

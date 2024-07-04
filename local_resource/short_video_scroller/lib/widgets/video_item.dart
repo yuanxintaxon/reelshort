@@ -13,16 +13,19 @@ class VideoItem extends StatefulWidget {
     required this.updateLastSeenPage,
     required this.onPlaying,
     required this.autoPlay,
-    required this.showOnlyVideo,
     required this.index,
+    required this.appBar,
+    required this.actionToolBar,
   }) : super(key: key);
   final VideoModel video;
   final List<String> videoWatched;
   final Function(int lastSeenPage)? updateLastSeenPage;
   final Function()? onPlaying;
   final bool autoPlay;
-  final bool showOnlyVideo;
   final int index;
+  final Widget appBar;
+  final Widget actionToolBar;
+
   @override
   State<VideoItem> createState() => _VideoItemState();
 }
@@ -82,8 +85,9 @@ class _VideoItemState extends State<VideoItem> {
             child: VideoPlayerApp(
               controller: _videoController!,
               autoPlay: widget.autoPlay,
-              showOnlyVideo: widget.showOnlyVideo,
               onPlaying: widget.onPlaying,
+              appBar: widget.appBar,
+              actionToolBar: widget.actionToolBar,
             ),
           )
         : VisibilityDetector(
