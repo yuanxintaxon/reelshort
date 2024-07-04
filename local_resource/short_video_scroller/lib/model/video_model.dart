@@ -13,6 +13,8 @@ class VideoModel {
   String? productName;
   String? productPermalink;
   String? stockStatus;
+  int? currentEp;
+  int? totalEp;
 
   VideoModel({
     this.id,
@@ -29,6 +31,8 @@ class VideoModel {
     this.productName,
     this.productPermalink,
     this.stockStatus = 'instock',
+    this.currentEp,
+    this.totalEp,
   });
 
   VideoModel.fromJson(Map<dynamic, dynamic> json)
@@ -45,5 +49,7 @@ class VideoModel {
         liked = json['liked'] ?? false,
         productName = json['product_name'],
         productPermalink = json['product_permalink'],
-        stockStatus = json['stock_status'];
+        stockStatus = json['stock_status'],
+        currentEp = json['currentEp'],
+        totalEp = json['totalEp'];
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resource_common/resource_common.dart';
 import 'package:short_video_scroller/page/page.dart';
 import 'package:short_video_scroller/short_video_scroller.dart';
 
@@ -47,6 +48,7 @@ class VideoPage extends StatefulWidget {
     required this.index,
     required this.updateLastSeenPage,
     required this.onPlaying,
+    required this.onBack,
     this.enableBackgroundContent = false,
     this.autoPlay = false,
   }) : super(key: key);
@@ -67,6 +69,7 @@ class VideoPage extends StatefulWidget {
   final int index;
   final Function(int lastSeenPage)? updateLastSeenPage;
   final Function()? onPlaying;
+  final Function()? onBack;
   final bool? enableBackgroundContent;
   final bool autoPlay;
 
@@ -146,6 +149,37 @@ class _VideoPageState extends State<VideoPage>
                 buyWidget: widget.buyWidget,
                 viewWidget: widget.viewWidget,
                 index: widget.index,
+              ),
+            ),
+          ),
+          // App bar
+          Align(
+            alignment: Alignment.topLeft,
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: widget.onBack,
+              child: Container(
+                height: 44,
+                padding: const EdgeInsets.only(left: 10),
+                child: IntrinsicWidth(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ImageRes.leftChevronWhite.toImage
+                        ..width = 22
+                        ..height = 22,
+                      1.hSpace,
+                      Flexible(
+                        child: "${widget.video.videoTitle}".toText
+                          ..style = Styles.ts_FFFFFF_15sp_regular_sofia_pro,
+                      ),
+                      13.hSpace,
+                      "${widget.video.currentEp}/${widget.video.totalEp}".toText
+                        ..style = Styles.ts_FFFFFF_15sp_regular_sofia_pro,
+                      18.hSpace,
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

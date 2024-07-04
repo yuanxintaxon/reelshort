@@ -74,6 +74,7 @@ class ShortVideoScroller extends StatefulWidget {
     this.updateLastSeenPage,
     this.onPageChanged,
     this.onPlaying,
+    this.onBack,
     this.enableBackgroundContent,
     this.autoPlay,
   }) : super(key: key);
@@ -99,6 +100,11 @@ class ShortVideoScroller extends StatefulWidget {
   ///
   /// Called every time a video is palyed
   final Function()? onPlaying;
+
+  /// Callback function when back button is clicked
+  ///
+  /// Called every time a back button is clicked
+  final Function()? onBack;
 
   /// Id of your watched videos.
   ///
@@ -246,6 +252,7 @@ class _ShortVideoScrollerState extends State<ShortVideoScroller> {
           enableBackgroundContent: widget.enableBackgroundContent,
           updateLastSeenPage: widget.updateLastSeenPage,
           onPlaying: widget.onPlaying,
+          onBack: widget.onBack,
           video: VideoModel.fromJson(widget.listData[index]),
           customVideoInfo: widget.customVideoInfo,
           followWidget: widget.followWidget,
