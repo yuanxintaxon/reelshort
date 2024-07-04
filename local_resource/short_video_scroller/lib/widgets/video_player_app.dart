@@ -156,14 +156,15 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
           alignment: Alignment.topLeft,
           child: FadeOut(
             animate: showOnlyVideo ? true : false,
-            child: widget.appBar,
+            child: IgnorePointer(ignoring: showOnlyVideo, child: widget.appBar),
           ),
         ),
         Align(
           alignment: Alignment.bottomCenter,
           child: FadeOut(
             animate: showOnlyVideo ? true : false,
-            child: _buildVideoControlPanel(),
+            child: IgnorePointer(
+                ignoring: showOnlyVideo, child: _buildVideoControlPanel()),
           ),
         ),
       ],
