@@ -8,14 +8,14 @@ class VideosLogic extends GetxController {
   final data = <Map<String, dynamic>>[].obs;
   List<String> videoWatched = [];
 
-  final autoPlay = false.obs;
+  final autoPlay = true.obs;
   int? initialVideoId;
 
   @override
   void onInit() {
     final arguments = Get.rootDelegate.arguments();
     final parameters = Get.rootDelegate.parameters;
-    autoPlay.value = arguments != null ? arguments['autoPlay'] : false;
+    // autoPlay.value = arguments != null ? arguments['autoPlay'] : false;
     initialVideoId =
         parameters['id'] != null ? int.parse(parameters['id']!) : null;
     super.onInit();
