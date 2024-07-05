@@ -126,30 +126,20 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       children: [
         _buildVideoFullScreen(screenRatio),
         Align(
-          alignment: Alignment.centerRight,
-          child: FadeOut(
-            animate: showOnlyVideo ? true : false,
-            child: widget.actionToolBar,
-          ),
-        ),
-        Align(
           alignment: Alignment.topCenter,
           child: FadeOut(
             animate: showOnlyVideo ? true : false,
-            child: Container(
-              height: 44,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [
-                    Styles.c_000000_opacity0,
-                    Styles.c_000000_opacity75,
-                  ],
-                  stops: const [0.0, 1.0],
-                ),
-              ),
-            ),
+            child: IgnorePointer(
+                ignoring: showOnlyVideo, child: _buildGradientBg()),
+          ),
+        ),
+        Positioned(
+          bottom: 100,
+          right: 0,
+          child: FadeOut(
+            animate: showOnlyVideo ? true : false,
+            child: IgnorePointer(
+                ignoring: showOnlyVideo, child: widget.actionToolBar),
           ),
         ),
         Align(
@@ -217,6 +207,21 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
         ),
       );
 
+  Widget _buildGradientBg() => Container(
+        height: 44,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.bottomCenter,
+            end: Alignment.topCenter,
+            colors: [
+              Styles.c_000000_opacity0,
+              Styles.c_000000_opacity75,
+            ],
+            stops: const [0.0, 1.0],
+          ),
+        ),
+      );
+
   Widget _buildVideoPlayer() => GestureDetector(
         behavior: HitTestBehavior.deferToChild,
         onTap: _controller.value.isPlaying ? toggleShowOnlyVideo : null,
@@ -261,28 +266,36 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                       size: 24),
                 ),
                 8.hSpace,
-                RichText(
-                  text: TextSpan(
-                    style: TextStyle(
-                      color: Styles.c_807F80,
-                      fontSize: 11,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: IMUtils.seconds2HMS(currDuration.inSeconds),
-                        style: TextStyle(
-                          color: Styles.c_FFFFFF,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w600,
-                        ),
+                Expanded(
+                  child: RichText(
+                    text: TextSpan(
+                      style: TextStyle(
+                        color: Styles.c_807F80,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
                       ),
-                      const TextSpan(text: " / "),
-                      TextSpan(
-                          text: IMUtils.seconds2HMS(maxDuration.inSeconds)),
-                    ],
+                      children: [
+                        TextSpan(
+                          text: IMUtils.seconds2HMS(currDuration.inSeconds),
+                          style: TextStyle(
+                            color: Styles.c_FFFFFF,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const TextSpan(text: " / "),
+                        TextSpan(
+                            text: IMUtils.seconds2HMS(maxDuration.inSeconds)),
+                      ],
+                    ),
                   ),
                 ),
+                "720P".toText
+                  ..style = TextStyle(
+                    color: Styles.c_FFFFFF,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w500,
+                  ),
               ],
             ),
           ),
