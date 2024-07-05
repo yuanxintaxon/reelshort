@@ -202,6 +202,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                   // ),
                   SizedBox(
                     height: height,
+                    width: width,
                     child: FittedBox(
                       fit: BoxFit.fitWidth,
                       child: SizedBox(
