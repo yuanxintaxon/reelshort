@@ -66,7 +66,7 @@ class _VideoItemState extends State<VideoItem> {
                     widget.onPlaying?.call();
                   }
 
-                  _videoController!.setLooping(true);
+                  _videoController!.setLooping(false);
                   // Update watched videos.
                   if (widget.video.id != null) {
                     widget.videoWatched.add(widget.video.id!.toString());

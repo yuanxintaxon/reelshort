@@ -39,6 +39,9 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
 
   @override
   void initState() {
+    if (widget.autoPlay == false) {
+      _showPause = true;
+    }
     _controller = widget.controller;
 
     // init durations
