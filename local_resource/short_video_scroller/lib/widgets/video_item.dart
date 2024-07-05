@@ -60,7 +60,8 @@ class _VideoItemState extends State<VideoItem> {
             onVisibilityChanged: (visibleInfo) {
               if (visibleInfo.visibleFraction > 0.8) {
                 if (!_videoController!.value.isPlaying) {
-                  if (widget.autoPlay) {
+                  // if (widget.autoPlay) {
+                  if (false) {
                     _videoController!.play();
                     widget.onPlaying?.call();
                   }
