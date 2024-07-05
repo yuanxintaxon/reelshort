@@ -166,6 +166,8 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
   Widget _buildVideoView(double screenRatio, BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
+    Logger.print(
+        "creturn apsect ratio ${_controller.value.aspectRatio} ${screenRatio}");
     return Stack(
       children: [
         GestureDetector(
@@ -177,21 +179,20 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
               color: Colors.black,
               width: width,
               height: height,
-              child: (_controller.value.aspectRatio < screenRatio)
-                  ? SizedBox.expand(
-                      child: FittedBox(
-                        fit: BoxFit.cover,
-                        child: SizedBox(
-                          width: _controller.value.size.width,
-                          height: _controller.value.size.height,
-                          child: _buildVideoPlayer(),
-                        ),
-                      ),
-                    )
-                  : AspectRatio(
-                      aspectRatio: _controller.value.aspectRatio,
-                      child: _buildVideoPlayer(),
-                    ),
+              child:
+                  // test
+                  //     FittedBox(
+                  //   fit: BoxFit.cover,
+                  //   child: SizedBox(
+                  //     width: _controller.value.size.width,
+                  //     height: _controller.value.size.height,
+                  //     child: _buildVideoPlayer(),
+                  //   ),
+                  // ),
+                  AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: _buildVideoPlayer(),
+              ),
             ),
           ),
         ),
