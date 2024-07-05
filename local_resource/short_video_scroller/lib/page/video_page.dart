@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:resource_common/resource_common.dart';
 import 'package:short_video_scroller/short_video_scroller.dart';
 
-class VideoPage extends StatefulWidget {
+class VideoPage extends StatelessWidget {
   /// Create video page view.
   const VideoPage({
     Key? key,
@@ -46,26 +46,17 @@ class VideoPage extends StatefulWidget {
   final bool autoPlay;
 
   @override
-  State<VideoPage> createState() => _VideoPageState();
-}
-
-class _VideoPageState extends State<VideoPage>
-    with AutomaticKeepAliveClientMixin<VideoPage> {
-  @override
-  bool get wantKeepAlive => true;
-
   @override
   Widget build(BuildContext context) {
-    super.build(context);
     return Container(
       color: Colors.black,
       child: VideoItem(
-        video: widget.video,
-        videoWatched: widget.videoWatched,
-        index: widget.index,
-        updateLastSeenPage: widget.updateLastSeenPage,
-        onPlaying: widget.onPlaying,
-        autoPlay: widget.autoPlay,
+        video: video,
+        videoWatched: videoWatched,
+        index: index,
+        updateLastSeenPage: updateLastSeenPage,
+        onPlaying: onPlaying,
+        autoPlay: autoPlay,
         appBar: _buildAppBar(),
         actionToolBar: _buildActionToolBar(),
       ),
@@ -74,7 +65,7 @@ class _VideoPageState extends State<VideoPage>
 
   Widget _buildAppBar() => GestureDetector(
         behavior: HitTestBehavior.translucent,
-        onTap: widget.onBack,
+        onTap: onBack,
         child: Container(
           height: 44,
           padding: const EdgeInsets.only(left: 10),
@@ -87,11 +78,11 @@ class _VideoPageState extends State<VideoPage>
                   ..height = 22,
                 1.hSpace,
                 Flexible(
-                  child: "${widget.video.videoTitle}".toText
+                  child: "${video.videoTitle}".toText
                     ..style = Styles.ts_FFFFFF_15sp_regular_sofia_pro,
                 ),
                 13.hSpace,
-                "${widget.video.currentEp}/${widget.video.totalEp}".toText
+                "${video.currentEp}/${video.totalEp}".toText
                   ..style = Styles.ts_FFFFFF_15sp_regular_sofia_pro,
                 18.hSpace,
               ],
@@ -101,13 +92,13 @@ class _VideoPageState extends State<VideoPage>
       );
 
   Widget _buildActionToolBar() => ActionsToolbar(
-        video: widget.video,
-        followWidget: widget.followWidget,
-        likeWidget: widget.likeWidget,
-        commentWidget: widget.commentWidget,
-        shareWidget: widget.shareWidget,
-        buyWidget: widget.buyWidget,
-        viewWidget: widget.viewWidget,
-        index: widget.index,
+        video: video,
+        followWidget: followWidget,
+        likeWidget: likeWidget,
+        commentWidget: commentWidget,
+        shareWidget: shareWidget,
+        buyWidget: buyWidget,
+        viewWidget: viewWidget,
+        index: index,
       );
 }
