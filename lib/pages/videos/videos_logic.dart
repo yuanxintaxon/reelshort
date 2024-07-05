@@ -46,38 +46,38 @@ class VideosLogic extends GetxController {
     //     userIDList: [(await DataSp.getLoginCertificate())!.userID]);
     // userInfo = result?.first;
     final dummyData = <Map<String, dynamic>>[
-      // {
-      //   'id': 1,
-      //   'url':
-      //       'https://chat-dev.ai1268.com/api/object/518789/c45c181a-9ec6-4a1c-8709-5513d342f96b.MOV',
-      //   'thumbnail':
-      //       'https://chat-dev.ai1268.com/api/object/518789/c5f0fd0c-d3e1-4ffb-a723-9196b1c8a8dc.png?type=image',
-      //   'video_title': 'Cat Following',
-      //   'description': 'description',
-      //   'likes': 5,
-      //   'liked': true,
-      //   'product_name': 'productName',
-      //   'product_permalink': 'productPermalink',
-      //   'stock_status': 'stockStatus',
-      //   'currentEp': 1,
-      //   'totalEp': 83,
-      // },
-      // {
-      //   'id': 2,
-      //   'url':
-      //       'https://chat-dev.ai1268.com/api/object/518789/cebc5109-c3f5-4b5e-84d8-21d39097b694.MOV',
-      //   'thumbnail':
-      //       'https://chat-dev.ai1268.com/api/object/518789/804c323e-276c-46f7-a62b-2c4d856fbe60.png?type=image',
-      //   'video_title': 'Cat Resting',
-      //   'description': 'description',
-      //   'likes': 5,
-      //   'liked': true,
-      //   'product_name': 'productName',
-      //   'product_permalink': 'productPermalink',
-      //   'stock_status': 'stockStatus',
-      //   'currentEp': 1,
-      //   'totalEp': 44,
-      // },
+      {
+        'id': 1,
+        'url':
+            'https://chat-dev.ai1268.com/api/object/518789/c45c181a-9ec6-4a1c-8709-5513d342f96b.MOV',
+        'thumbnail':
+            'https://chat-dev.ai1268.com/api/object/518789/c5f0fd0c-d3e1-4ffb-a723-9196b1c8a8dc.png?type=image',
+        'video_title': 'Cat Following',
+        'description': 'description',
+        'likes': 5,
+        'liked': true,
+        'product_name': 'productName',
+        'product_permalink': 'productPermalink',
+        'stock_status': 'stockStatus',
+        'currentEp': 1,
+        'totalEp': 83,
+      },
+      {
+        'id': 2,
+        'url':
+            'https://chat-dev.ai1268.com/api/object/518789/cebc5109-c3f5-4b5e-84d8-21d39097b694.MOV',
+        'thumbnail':
+            'https://chat-dev.ai1268.com/api/object/518789/804c323e-276c-46f7-a62b-2c4d856fbe60.png?type=image',
+        'video_title': 'Cat Resting',
+        'description': 'description',
+        'likes': 5,
+        'liked': true,
+        'product_name': 'productName',
+        'product_permalink': 'productPermalink',
+        'stock_status': 'stockStatus',
+        'currentEp': 1,
+        'totalEp': 44,
+      },
       {
         'id': 3,
         'url':
@@ -147,12 +147,6 @@ class VideosLogic extends GetxController {
   void enableAutoPlay() {
     if (autoPlay.value == false) {
       autoPlay.value = true;
-    }
-  }
-
-  void disableAutoPlay() {
-    if (autoPlay.value == true) {
-      autoPlay.value = false;
     }
   }
 

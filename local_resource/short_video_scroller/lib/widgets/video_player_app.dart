@@ -200,9 +200,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                   //   aspectRatio: _controller.value.aspectRatio,
                   //   child: _buildVideoPlayer(),
                   // ),
-                  SizedBox(
-                    height: height,
-                    width: width,
+                  SizedBox.expand(
                     child: FittedBox(
                       fit: BoxFit.fitWidth,
                       child: SizedBox(

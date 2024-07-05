@@ -24,11 +24,10 @@ class VideosPage extends StatelessWidget {
                   // logic.updateBrowserUrl(lastSeenPageIndex);
                 },
                 onPageChanged: (pageIndex) {
-                  // logic.disableAutoPlay();
                   logic.updateBrowserUrl(pageIndex);
                 },
                 onPlaying: () {
-                  logic.enableAutoPlay();
+                  // logic.enableAutoPlay();
                 },
                 onBack: () {
                   Logger.print("creturn back");
