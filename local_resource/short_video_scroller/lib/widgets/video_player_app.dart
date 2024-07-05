@@ -27,7 +27,7 @@ class VideoPlayerApp extends StatefulWidget {
 
 class _VideoPlayerAppState extends State<VideoPlayerApp> {
   late VideoPlayerController _controller;
-  bool _showPause = false;
+  bool _showPause = true;
   Duration minDuration = Duration.zero,
       maxDuration = Duration.zero,
       currDuration = Duration.zero;
@@ -39,11 +39,11 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
 
   @override
   void initState() {
-    if (widget.autoPlay == false) {
-      _showPause = true;
-    }
     _controller = widget.controller;
-
+    print("creturn isInitialized ${widget.controller.value.isInitialized}");
+    print("creturn size ${widget.controller.value.size}");
+    print("creturn isBuffering ${widget.controller.value.isBuffering}");
+    print("creturn isCompleted ${widget.controller.value.isCompleted}");
     // init durations
     currDuration = _controller.value.position;
     maxDuration = _controller.value.duration;
@@ -55,6 +55,10 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
 
   void handleLiveUIUpdate() {
     // update UI state of playing/pause
+    print("creturn dd isInitialized ${widget.controller.value.isInitialized}");
+    print("creturn dd size ${widget.controller.value.size}");
+    print("creturn dd isBuffering ${widget.controller.value.isBuffering}");
+    print("creturn dd isCompleted ${widget.controller.value.isCompleted}");
     if (_controller.value.isPlaying) {
       hideFloatingWidgets();
       if (_showPause) {
@@ -199,7 +203,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
             ),
           ),
         ),
-        _buildPauseIcon(),
+        if (_showPause) _buildPauseIcon(),
       ],
     );
   }
