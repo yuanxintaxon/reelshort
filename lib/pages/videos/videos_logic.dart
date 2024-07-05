@@ -9,11 +9,14 @@ class VideosLogic extends GetxController {
   List<String> videoWatched = [];
 
   final autoPlay = false.obs;
+  int? initialVideoId;
 
   @override
   void onInit() {
     final arguments = Get.rootDelegate.arguments();
+    final parameters = Get.rootDelegate.parameters;
     autoPlay.value = arguments != null ? arguments['autoPlay'] : false;
+    initialVideoId = int.parse(parameters['id']!);
     super.onInit();
   }
 
@@ -123,6 +126,19 @@ class VideosLogic extends GetxController {
         'totalEp': 60,
       },
     ];
+
+    var initialPageIndex = 0;
+    if (initialVideoId != null) {
+      final video = dummyData
+          .firstWhereOrNull((element) => element["id"] == initialVideoId);
+      if (video != null) {
+        initialPageIndex = dummyData.indexOf(video);
+        final removedElement = dummyData.removeAt(initialPageIndex);
+        dummyData.insert(0, removedElement);
+      }
+      Logger.print("creturn pageIndex to start $initialPageIndex");
+    }
+    Logger.print("creturn pageIndex to start ${dummyData}");
     data.assignAll(dummyData);
     updateBrowserUrl();
   }
@@ -133,8 +149,8 @@ class VideosLogic extends GetxController {
     }
   }
 
-  void updateBrowserUrl([int lastSeenPageIndex = 0]) async {
-    final video = data.elementAt(lastSeenPageIndex);
+  void updateBrowserUrl([int pageIndex = 0]) async {
+    final video = data.elementAt(pageIndex);
     html.window.history
         .replaceState(null, "", '${AppRoutes.videos}?id=${video["id"]}');
   }
