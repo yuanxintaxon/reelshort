@@ -84,6 +84,7 @@ class _VideoItemState extends State<VideoItem> {
             },
             key: UniqueKey(),
             child: VideoPlayerApp(
+              video: widget.video,
               controller: _videoController!,
               autoPlay: widget.autoPlay,
               onPlaying: widget.onPlaying,

@@ -5,16 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:resource_common/resource_common.dart';
 import 'package:video_player/video_player.dart';
 
+import '../model/video_model.dart';
+
 class VideoPlayerApp extends StatefulWidget {
   /// Create video player.
   const VideoPlayerApp({
     Key? key,
+    required this.video,
     required this.controller,
     required this.autoPlay,
     required this.onPlaying,
     required this.appBar,
     required this.actionToolBar,
   }) : super(key: key);
+  final VideoModel video;
   final VideoPlayerController controller;
   final bool autoPlay;
   final Function()? onPlaying;
@@ -189,10 +193,13 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                   //     child: _buildVideoPlayer(),
                   //   ),
                   // ),
-                  AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: _buildVideoPlayer(),
-              ),
+
+                  !_controller.value.isPlaying
+                      ? _buildThumbnail(context)
+                      : AspectRatio(
+                          aspectRatio: _controller.value.aspectRatio,
+                          child: _buildVideoPlayer(),
+                        ),
             ),
           ),
         ),
@@ -200,6 +207,26 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       ],
     );
   }
+
+  Widget _buildThumbnail(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    return FittedBox(
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: Image.network(
+          widget.video.thumbnail ?? "",
+          width: double.infinity,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildVideoPlayer() => ColorFiltered(
+      colorFilter: ColorFilter.mode(
+          Colors.black.withOpacity(cinemaMode ? 0.15 : 0), BlendMode.srcOver),
+      child: VideoPlayer(_controller));
 
   Widget _buildPauseIcon() => Align(
         alignment: Alignment.center,
@@ -234,11 +261,6 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
           ),
         ),
       );
-
-  Widget _buildVideoPlayer() => ColorFiltered(
-      colorFilter: ColorFilter.mode(
-          Colors.black.withOpacity(cinemaMode ? 0.15 : 0), BlendMode.srcOver),
-      child: VideoPlayer(_controller));
 
   Widget _buildVideoControlPanel() => Stack(
         clipBehavior: Clip.none,
