@@ -15,7 +15,7 @@ class Config {
   static Future init(Function() runApp) async {
     WidgetsFlutterBinding.ensureInitialized();
 
-    usePathUrlStrategy();
+    // usePathUrlStrategy();
     // Initialize the AppEnv with the desired environment
     AppEnv.instance.init(Environment.DEV);
 
