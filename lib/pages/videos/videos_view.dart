@@ -12,6 +12,7 @@ class VideosPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Styles.c_2E2E2E,
       body: Obx(
         () => Stack(
           alignment: Alignment.topLeft,
