@@ -124,7 +124,9 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     double screenRatio = MediaQuery.of(context).size.aspectRatio;
     return Stack(
       children: [
-        _buildVideoFullScreen(screenRatio),
+        Align(
+            alignment: Alignment.center,
+            child: _buildVideoView(screenRatio, context)),
         Align(
           alignment: Alignment.topCenter,
           child: FadeOut(
@@ -161,32 +163,42 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     );
   }
 
-  Widget _buildVideoFullScreen(double screenRatio) =>
-      (_controller.value.aspectRatio < screenRatio)
-          ? Stack(
-              children: [
-                SizedBox.expand(
-                  child: FittedBox(
-                    fit: BoxFit.cover,
-                    child: SizedBox(
-                      width: _controller.value.size.width,
-                      height: _controller.value.size.height,
+  Widget _buildVideoView(double screenRatio, BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+    return Stack(
+      children: [
+        GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: _controller.value.isPlaying ? toggleShowOnlyVideo : null,
+          onDoubleTap: togglePlayVideo,
+          child: AbsorbPointer(
+            child: Container(
+              color: Colors.black,
+              width: width,
+              height: height,
+              child: (_controller.value.aspectRatio < screenRatio)
+                  ? SizedBox.expand(
+                      child: FittedBox(
+                        fit: BoxFit.cover,
+                        child: SizedBox(
+                          width: _controller.value.size.width,
+                          height: _controller.value.size.height,
+                          child: _buildVideoPlayer(),
+                        ),
+                      ),
+                    )
+                  : AspectRatio(
+                      aspectRatio: _controller.value.aspectRatio,
                       child: _buildVideoPlayer(),
                     ),
-                  ),
-                ),
-                if (_showPause) _buildPauseIcon(),
-              ],
-            )
-          : AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: Stack(
-                children: [
-                  _buildVideoPlayer(),
-                  if (_showPause) _buildPauseIcon(),
-                ],
-              ),
-            );
+            ),
+          ),
+        ),
+        if (_showPause) _buildPauseIcon(),
+      ],
+    );
+  }
 
   Widget _buildPauseIcon() => Align(
         alignment: Alignment.center,
@@ -222,17 +234,10 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
         ),
       );
 
-  Widget _buildVideoPlayer() => GestureDetector(
-        behavior: HitTestBehavior.deferToChild,
-        onTap: _controller.value.isPlaying ? toggleShowOnlyVideo : null,
-        onDoubleTap: togglePlayVideo,
-        child: AbsorbPointer(
-            child: ColorFiltered(
-                colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(cinemaMode ? 0.15 : 0),
-                    BlendMode.srcOver),
-                child: VideoPlayer(_controller))),
-      );
+  Widget _buildVideoPlayer() => ColorFiltered(
+      colorFilter: ColorFilter.mode(
+          Colors.black.withOpacity(cinemaMode ? 0.15 : 0), BlendMode.srcOver),
+      child: VideoPlayer(_controller));
 
   Widget _buildVideoControlPanel() => Stack(
         clipBehavior: Clip.none,
