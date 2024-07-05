@@ -193,13 +193,21 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                   //     child: _buildVideoPlayer(),
                   //   ),
                   // ),
-
-                  !_controller.value.isPlaying
-                      ? _buildThumbnail(context)
-                      : AspectRatio(
-                          aspectRatio: _controller.value.aspectRatio,
-                          child: _buildVideoPlayer(),
-                        ),
+                  Stack(
+                alignment: Alignment.center,
+                children: [
+                  AspectRatio(
+                    aspectRatio: _controller.value.aspectRatio,
+                    child: _buildVideoPlayer(),
+                  ),
+                  Opacity(
+                    opacity:
+                        _controller.value.position == Duration.zero ? 1 : 0,
+                    child: SizedBox(
+                        width: width, height: height, child: _buildThumbnail()),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -208,13 +216,11 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     );
   }
 
-  Widget _buildThumbnail(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+  Widget _buildThumbnail() {
     return FittedBox(
       child: SizedBox(
-        width: width,
-        height: height,
+        width: _controller.value.size.width,
+        height: _controller.value.size.height,
         child: Image.network(
           widget.video.thumbnail ?? "",
           width: double.infinity,
