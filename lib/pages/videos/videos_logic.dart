@@ -153,7 +153,7 @@ class VideosLogic extends GetxController {
   void updateBrowserUrl([int pageIndex = 0]) async {
     final video = data.elementAt(pageIndex);
     html.window.history
-        .replaceState(null, "", '${AppRoutes.videos}?id=${video["id"]}');
+        .replaceState(null, "", '/#${AppRoutes.videos}?id=${video["id"]}');
   }
 
   void returnHome() => AppNavigator.startHome();
