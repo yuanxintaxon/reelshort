@@ -199,7 +199,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
             ),
           ),
         ),
-        if (_showPause) _buildPauseIcon(),
+        _buildPauseIcon(),
       ],
     );
   }
