@@ -55,6 +55,8 @@ class _VideoItemState extends State<VideoItem> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return _videoController != null && _videoController!.value.isInitialized
         ? VisibilityDetector(
             onVisibilityChanged: (visibleInfo) {
@@ -94,25 +96,31 @@ class _VideoItemState extends State<VideoItem> {
           )
         : VisibilityDetector(
             key: UniqueKey(),
-            child: Image.network(
-              widget.video.thumbnail ?? "",
-              // loadingBuilder: (context, child, loadingProgress) {
-              //   return const AspectRatio(
-              //     aspectRatio: 16 / 9,
-              //     child: Center(
-              //       child: Icon(Icons.play_arrow, size: 80, color: Colors.grey),
-              //     ),
-              //   );
-              // },
-              errorBuilder: (context, error, stackTrace) {
-                return const AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: Center(
-                    child: Icon(Icons.play_arrow, size: 80, color: Colors.grey),
-                  ),
-                );
-              },
-              fit: BoxFit.fitWidth,
+            child: Container(
+              color: Colors.black,
+              width: width,
+              height: height,
+              child: Image.network(
+                widget.video.thumbnail ?? "",
+                // loadingBuilder: (context, child, loadingProgress) {
+                //   return const AspectRatio(
+                //     aspectRatio: 16 / 9,
+                //     child: Center(
+                //       child: Icon(Icons.play_arrow, size: 80, color: Colors.grey),
+                //     ),
+                //   );
+                // },
+                errorBuilder: (context, error, stackTrace) {
+                  return const AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Center(
+                      child:
+                          Icon(Icons.play_arrow, size: 80, color: Colors.grey),
+                    ),
+                  );
+                },
+                fit: BoxFit.fitWidth,
+              ),
             ),
             onVisibilityChanged: (info) {
               if (info.visibleFraction > 0.6) {
