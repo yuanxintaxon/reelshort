@@ -41,6 +41,7 @@ class _VideoItemState extends State<VideoItem> {
 
   @override
   void dispose() async {
+    print("creturn disposing ${widget.video.id}");
     super.dispose();
     if (_videoController != null) {
       if (_videoController!.value.isPlaying) {

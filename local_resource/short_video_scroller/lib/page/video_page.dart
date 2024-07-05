@@ -46,7 +46,6 @@ class VideoPage extends StatelessWidget {
   final bool autoPlay;
 
   @override
-  @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.black,
