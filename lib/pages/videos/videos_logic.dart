@@ -16,7 +16,8 @@ class VideosLogic extends GetxController {
     final arguments = Get.rootDelegate.arguments();
     final parameters = Get.rootDelegate.parameters;
     autoPlay.value = arguments != null ? arguments['autoPlay'] : false;
-    initialVideoId = int.parse(parameters['id']!);
+    initialVideoId =
+        parameters['id'] != null ? int.parse(parameters['id']!) : null;
     super.onInit();
   }
 
@@ -136,9 +137,9 @@ class VideosLogic extends GetxController {
         final removedElement = dummyData.removeAt(initialPageIndex);
         dummyData.insert(0, removedElement);
       }
-      Logger.print("creturn pageIndex to start $initialPageIndex");
+      // Logger.print("creturn pageIndex to start $initialPageIndex");
     }
-    Logger.print("creturn pageIndex to start ${dummyData}");
+    // Logger.print("creturn pageIndex to start ${dummyData}");
     data.assignAll(dummyData);
     updateBrowserUrl();
   }
