@@ -15,7 +15,7 @@ class VideosLogic extends GetxController {
   void onInit() {
     final arguments = Get.rootDelegate.arguments();
     final parameters = Get.rootDelegate.parameters;
-    autoPlay.value = arguments != null ? arguments['autoPlay'] : false;
+    // autoPlay.value = arguments != null ? arguments['autoPlay'] : false;
     initialVideoId =
         parameters['id'] != null ? int.parse(parameters['id']!) : null;
     super.onInit();

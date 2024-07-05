@@ -40,10 +40,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
   @override
   void initState() {
     _controller = widget.controller;
-    print("creturn isInitialized ${widget.controller.value.isInitialized}");
-    print("creturn size ${widget.controller.value.size}");
-    print("creturn isBuffering ${widget.controller.value.isBuffering}");
-    print("creturn isCompleted ${widget.controller.value.isCompleted}");
+
     // init durations
     currDuration = _controller.value.position;
     maxDuration = _controller.value.duration;
@@ -55,10 +52,6 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
 
   void handleLiveUIUpdate() {
     // update UI state of playing/pause
-    print("creturn dd isInitialized ${widget.controller.value.isInitialized}");
-    print("creturn dd size ${widget.controller.value.size}");
-    print("creturn dd isBuffering ${widget.controller.value.isBuffering}");
-    print("creturn dd isCompleted ${widget.controller.value.isCompleted}");
     if (_controller.value.isPlaying) {
       hideFloatingWidgets();
       if (_showPause) {
