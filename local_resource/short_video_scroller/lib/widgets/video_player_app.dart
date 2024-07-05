@@ -196,9 +196,18 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                   Stack(
                 alignment: Alignment.center,
                 children: [
-                  AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: _buildVideoPlayer(),
+                  // AspectRatio(
+                  //   aspectRatio: _controller.value.aspectRatio,
+                  //   child: _buildVideoPlayer(),
+                  // ),
+                  SizedBox.expand(
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: SizedBox(
+                          width: _controller.value.size.width,
+                          height: _controller.value.size.height,
+                          child: _buildVideoPlayer()),
+                    ),
                   ),
                   Opacity(
                     opacity:
@@ -217,15 +226,9 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
   }
 
   Widget _buildThumbnail() {
-    return FittedBox(
-      child: SizedBox(
-        width: _controller.value.size.width,
-        height: _controller.value.size.height,
-        child: Image.network(
-          widget.video.thumbnail ?? "",
-          width: double.infinity,
-        ),
-      ),
+    return Image.network(
+      widget.video.thumbnail ?? "",
+      fit: BoxFit.fitWidth,
     );
   }
 
