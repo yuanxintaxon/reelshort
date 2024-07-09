@@ -166,5 +166,10 @@ class VideosLogic extends GetxController {
         .replaceState(null, "", '/#${AppRoutes.videos}?id=${video["id"]}');
   }
 
-  void returnHome() => AppNavigator.startHome();
+  void returnHome() {
+    // AppNavigator.startHome();
+
+    Get.rootDelegate.history.clear();
+    Get.rootDelegate.toNamed(AppRoutes.home);
+  }
 }

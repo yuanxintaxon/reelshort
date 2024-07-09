@@ -33,7 +33,9 @@ class VideosPage extends StatelessWidget {
                 },
                 onBack: () {
                   Logger.print("creturn back");
-                  logic.returnHome();
+                  Get.rootDelegate.history.clear();
+                  Get.rootDelegate.toNamed(AppRoutes.home);
+                  // logic.returnHome();
                 },
                 // Video data.
                 listData: logic.data,
