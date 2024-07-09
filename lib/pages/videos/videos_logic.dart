@@ -158,6 +158,10 @@ class VideosLogic extends GetxController {
 
   void updateBrowserUrl([int pageIndex = 0]) async {
     final video = data.elementAt(pageIndex);
+    Logger.print(
+        "creturn updatebrowserlurl ${'/#${AppRoutes.videos}?id=${video["id"]}'}");
+    print(
+        "creturn log updatebrowserlurl ${'/#${AppRoutes.videos}?id=${video["id"]}'}");
     html.window.history
         .replaceState(null, "", '/#${AppRoutes.videos}?id=${video["id"]}');
   }
