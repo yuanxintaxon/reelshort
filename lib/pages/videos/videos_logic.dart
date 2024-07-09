@@ -168,8 +168,8 @@ class VideosLogic extends GetxController {
 
   void returnHome() {
     // AppNavigator.startHome();
-
-    Get.rootDelegate.history.clear();
-    Get.rootDelegate.toNamed(AppRoutes.home);
+    Get.rootDelegate.offNamed(AppRoutes.home);
+    // Get.rootDelegate.history.clear();
+    // Get.rootDelegate.toNamed(AppRoutes.home);
   }
 }
