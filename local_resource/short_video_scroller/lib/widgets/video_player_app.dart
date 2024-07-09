@@ -69,6 +69,10 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     if (_controller.value.volume != 1.0 && _controller.value.isPlaying) {
       Logger.print("creturn html unmute from video player app a2");
       _controller.setVolume(1.0);
+    } else if (_controller.value.volume == 1.0 &&
+        !_controller.value.isPlaying) {
+      Logger.print("creturn html unmute from video player app a3");
+      _controller.play();
     }
   }
 
