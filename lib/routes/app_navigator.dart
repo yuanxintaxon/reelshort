@@ -14,7 +14,7 @@ class AppNavigator {
 
   static startWelcome() => Get.rootDelegate.toNamed(AppRoutes.welcome);
 
-  static startHome() => Get.rootDelegate.offAndToNamed(AppRoutes.home);
+  static startHome() => Get.rootDelegate.offNamed(AppRoutes.home);
 
   static startVideos() => Get.rootDelegate.toNamed(
         AppRoutes.videos,

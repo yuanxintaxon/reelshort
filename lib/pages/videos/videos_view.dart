@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:reelshort/routes/app_pages.dart';
 import 'package:resource_common/resource_common.dart';
 import 'package:short_video_scroller/short_video_scroller.dart';
 import 'videos_logic.dart';

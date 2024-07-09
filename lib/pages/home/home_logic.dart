@@ -6,6 +6,12 @@ class HomeLogic extends GetxController {
   final activeIndex = 0.obs;
 
   @override
+  void onInit() {
+    Logger.print("creturn home init");
+    super.onInit();
+  }
+
+  @override
   void onReady() {
     super.onInit();
   }
