@@ -62,8 +62,8 @@ class _VideoItemState extends State<VideoItem> {
             onVisibilityChanged: (visibleInfo) {
               if (visibleInfo.visibleFraction > 0.8) {
                 if (!_videoController!.value.isPlaying) {
+                  _videoController!.setVolume(0.0);
                   if (widget.autoPlay) {
-                    _videoController!.setVolume(0.0);
                     _videoController!.play();
                     widget.onPlaying?.call();
                   }
