@@ -4,7 +4,12 @@
 window.addEventListener("load", function () {
     _flutter.loader.load({
         onEntrypointLoaded: async function (engineInitializer) {
-            const appRunner = await engineInitializer.initializeEngine({ useColorEmoji: true });
+            // Run-time engine configuration
+            let config = {
+                // renderer: useHtml ? "html" : "canvaskit",
+                useColorEmoji: true
+            };
+            const appRunner = await engineInitializer.initializeEngine(config);
             await appRunner.runApp();
         },
     });
