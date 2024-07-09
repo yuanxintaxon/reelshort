@@ -32,10 +32,7 @@ class VideosPage extends StatelessWidget {
                   logic.enableAutoPlay();
                 },
                 onBack: () {
-                  Logger.print("creturn back");
-                  Get.rootDelegate.history.clear();
-                  Get.rootDelegate.toNamed(AppRoutes.home);
-                  // logic.returnHome();
+                  logic.returnHome();
                 },
                 // Video data.
                 listData: logic.data,
