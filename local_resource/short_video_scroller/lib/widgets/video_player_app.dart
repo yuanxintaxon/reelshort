@@ -15,6 +15,7 @@ class VideoPlayerApp extends StatefulWidget {
     required this.controller,
     required this.autoPlay,
     required this.onPlaying,
+    required this.unmuteSub,
     required this.appBar,
     required this.actionToolBar,
   }) : super(key: key);
@@ -22,6 +23,7 @@ class VideoPlayerApp extends StatefulWidget {
   final VideoPlayerController controller;
   final bool autoPlay;
   final Function()? onPlaying;
+  final Stream<int> unmuteSub;
   final Widget appBar;
   final Widget actionToolBar;
 
@@ -40,6 +42,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
   Timer? _hideTimer;
   final int secToHideFloatingWidgets = 1;
   final cinemaMode = true;
+  StreamSubscription? _unmuteSub;
 
   @override
   void initState() {
@@ -51,7 +54,19 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
 
     // listener for live UI update
     _controller.addListener(handleLiveUIUpdate);
+    _unmuteSub = widget.unmuteSub.listen(handleUnmute);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _unmuteSub?.cancel;
+    super.dispose();
+  }
+
+  void handleUnmute(int value) {
+    Logger.print("creturn unmute from video player app");
+    _controller.setVolume(1.0);
   }
 
   void handleLiveUIUpdate() {

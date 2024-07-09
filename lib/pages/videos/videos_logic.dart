@@ -2,14 +2,23 @@ import 'package:get/get.dart';
 import 'package:reelshort/routes/app_navigator.dart';
 import 'package:reelshort/routes/app_pages.dart';
 import 'package:resource_common/resource_common.dart';
+import 'package:rxdart/subjects.dart';
 import 'dart:html' as html;
 
 class VideosLogic extends GetxController {
   final data = <Map<String, dynamic>>[].obs;
   List<String> videoWatched = [];
 
+  final unmuteSub = PublishSubject<int>();
+
   final autoPlay = false.obs;
   int? initialVideoId;
+
+  @override
+  void onClose() {
+    unmuteSub.close();
+    super.onClose();
+  }
 
   @override
   void onInit() {
@@ -171,5 +180,10 @@ class VideosLogic extends GetxController {
     Get.rootDelegate.offNamed(AppRoutes.home);
     // Get.rootDelegate.history.clear();
     // Get.rootDelegate.toNamed(AppRoutes.home);
+  }
+
+  void unmutePlayer() {
+    Logger.print("creturn unmute from video logic");
+    unmuteSub.add(1);
   }
 }

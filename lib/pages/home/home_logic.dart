@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:get/get.dart';
 import 'package:reelshort/routes/app_navigator.dart';
 import 'package:resource_common/resource_common.dart';

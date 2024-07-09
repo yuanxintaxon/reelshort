@@ -23,6 +23,7 @@ class VideosPage extends StatelessWidget {
                 // Called every time video page is changed.
                 updateLastSeenPage: (lastSeenPageIndex) {
                   // logic.updateBrowserUrl(lastSeenPageIndex);
+                  logic.unmutePlayer();
                 },
                 onPageChanged: (pageIndex) {
                   // logic.disableAutoPlay();
@@ -34,6 +35,7 @@ class VideosPage extends StatelessWidget {
                 onBack: () {
                   logic.returnHome();
                 },
+                unmuteSub: logic.unmuteSub.stream,
                 // Video data.
                 listData: logic.data,
                 autoPlay: logic.autoPlay.value,

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:short_video_scroller/model/video_model.dart';
@@ -75,6 +77,7 @@ class ShortVideoScroller extends StatefulWidget {
     this.onPageChanged,
     this.onPlaying,
     this.onBack,
+    required this.unmuteSub,
     this.enableBackgroundContent,
     this.autoPlay,
   }) : super(key: key);
@@ -105,6 +108,9 @@ class ShortVideoScroller extends StatefulWidget {
   ///
   /// Called every time a back button is clicked
   final Function()? onBack;
+
+  /// Streamsubscription listener
+  final Stream<int> unmuteSub;
 
   /// Id of your watched videos.
   ///
@@ -252,6 +258,7 @@ class _ShortVideoScrollerState extends State<ShortVideoScroller> {
           updateLastSeenPage: widget.updateLastSeenPage,
           onPlaying: widget.onPlaying,
           onBack: widget.onBack,
+          unmuteSub: widget.unmuteSub,
           video: VideoModel.fromJson(widget.listData[index]),
           customVideoInfo: widget.customVideoInfo,
           followWidget: widget.followWidget,
