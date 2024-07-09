@@ -60,7 +60,6 @@ class _VideoItemState extends State<VideoItem> {
     return _videoController != null && _videoController!.value.isInitialized
         ? VisibilityDetector(
             onVisibilityChanged: (visibleInfo) {
-              _videoController!.setVolume(0.0);
               if (visibleInfo.visibleFraction > 0.8) {
                 if (!_videoController!.value.isPlaying) {
                   if (widget.autoPlay) {
@@ -129,6 +128,8 @@ class _VideoItemState extends State<VideoItem> {
                     Uri.parse(widget.video.url))
                   ..initialize().then(
                     (_) {
+                      // mute on init
+                      _videoController!.setVolume(0.0);
                       setState(() {});
                     },
                   );
