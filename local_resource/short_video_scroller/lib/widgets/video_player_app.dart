@@ -65,8 +65,11 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
   }
 
   void handleUnmute(int value) {
-    Logger.print("creturn unmute from video player app");
-    _controller.setVolume(1.0);
+    Logger.print("creturn html unmute from video player app a1");
+    if (_controller.value.volume != 1.0) {
+      Logger.print("creturn html unmute from video player app a2");
+      _controller.setVolume(1.0);
+    }
   }
 
   void handleLiveUIUpdate() {
