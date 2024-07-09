@@ -240,7 +240,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
         alignment: Alignment.center,
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
-          onTap: togglePlayVideo,
+          onTap: _controller.play,
           child: Container(
             width: 40,
             height: 40,
