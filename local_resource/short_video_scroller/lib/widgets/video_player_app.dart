@@ -15,7 +15,6 @@ class VideoPlayerApp extends StatefulWidget {
     required this.controller,
     required this.autoPlay,
     required this.onPlaying,
-    required this.unmuteSub,
     required this.appBar,
     required this.actionToolBar,
   }) : super(key: key);
@@ -23,7 +22,6 @@ class VideoPlayerApp extends StatefulWidget {
   final VideoPlayerController controller;
   final bool autoPlay;
   final Function()? onPlaying;
-  final Stream<int> unmuteSub;
   final Widget appBar;
   final Widget actionToolBar;
 
@@ -39,11 +37,9 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       currDuration = Duration.zero;
 
   bool showOnlyVideo = false;
-  bool autoUnmute = true;
   Timer? _hideTimer;
   final int secToHideFloatingWidgets = 1;
   final cinemaMode = true;
-  StreamSubscription? _unmuteSub;
 
   @override
   void initState() {
@@ -55,29 +51,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
 
     // listener for live UI update
     _controller.addListener(handleLiveUIUpdate);
-    _unmuteSub = widget.unmuteSub.listen(handleUnmute);
     super.initState();
-  }
-
-  @override
-  void dispose() {
-    _unmuteSub?.cancel;
-    super.dispose();
-  }
-
-  void handleUnmute(int value) {
-    Logger.print("creturn html unmute from video player app a1");
-    if (_controller.value.volume != 1.0 && _controller.value.isPlaying) {
-      Logger.print("creturn html unmute from video player app a2");
-      _controller.setVolume(1.0);
-      autoUnmute = true;
-    } else if (autoUnmute &&
-        _controller.value.volume == 1.0 &&
-        !_controller.value.isPlaying) {
-      Logger.print("creturn html unmute from video player app a3");
-      autoUnmute = false;
-      _controller.play();
-    }
   }
 
   void handleLiveUIUpdate() {
@@ -138,14 +112,12 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     if (_controller.value.isPlaying) {
       _controller.pause();
       setState(() {
-        autoUnmute = false;
         _showPause = true;
       });
     } else {
       _controller.play();
       widget.onPlaying?.call();
       setState(() {
-        autoUnmute = false;
         _showPause = false;
       });
     }

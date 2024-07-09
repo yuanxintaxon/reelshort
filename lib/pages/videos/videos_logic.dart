@@ -1,29 +1,15 @@
-import 'dart:async';
-
 import 'package:get/get.dart';
 import 'package:reelshort/routes/app_navigator.dart';
 import 'package:reelshort/routes/app_pages.dart';
 import 'package:resource_common/resource_common.dart';
-import 'package:rxdart/subjects.dart';
 import 'dart:html' as html;
-import 'dart:js' as js;
 
 class VideosLogic extends GetxController {
   final data = <Map<String, dynamic>>[].obs;
   List<String> videoWatched = [];
 
-  final unmuteSub = PublishSubject<int>();
-
   final autoPlay = false.obs;
   int? initialVideoId;
-  Timer? _timer;
-
-  @override
-  void onClose() {
-    _timer?.cancel();
-    unmuteSub.close();
-    super.onClose();
-  }
 
   @override
   void onInit() {
@@ -32,14 +18,12 @@ class VideosLogic extends GetxController {
     autoPlay.value = arguments != null ? arguments['autoPlay'] : false;
     initialVideoId =
         parameters['id'] != null ? int.parse(parameters['id']!) : null;
-
     super.onInit();
   }
 
   @override
   void onReady() {
     _initData();
-    createInvisibleDiv();
     super.onReady();
   }
 
@@ -185,33 +169,7 @@ class VideosLogic extends GetxController {
   void returnHome() {
     // AppNavigator.startHome();
     Get.rootDelegate.offNamed(AppRoutes.home);
-
-    // todo: trigger the onclick event using the element
-
     // Get.rootDelegate.history.clear();
     // Get.rootDelegate.toNamed(AppRoutes.home);
-  }
-
-  void createInvisibleDiv() {
-    Logger.print("creturn html div");
-  html.ButtonElement invisbleBtn = html.ButtonElement();
-    invisbleBtn.id = "invi-btn";
-    invisbleBtn.onClick.listen(unmutePlayer);
-    html.document.body!.append(invisbleBtn);
-    manuallyTriggerGesture();
-  }
-
-  void manuallyTriggerGesture() {
-    // runs every 1 second
-    if (_timer != null) return;
-    _timer = Timer.periodic(const Duration(milliseconds: 1000), (Timer timer) {
-      var element = html.document.getElementById("invi-btn");
-      element?.click();
-    });
-  }
-
-  void unmutePlayer([html.MouseEvent? event]) {
-    Logger.print("creturn html unmute from video logic");
-    unmuteSub.add(1);
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:resource_common/resource_common.dart';
 import 'package:short_video_scroller/short_video_scroller.dart';
@@ -25,7 +23,6 @@ class VideoPage extends StatelessWidget {
     required this.updateLastSeenPage,
     required this.onPlaying,
     required this.onBack,
-    required this.unmuteSub,
     this.autoPlay = false,
   }) : super(key: key);
   final VideoModel video;
@@ -46,7 +43,6 @@ class VideoPage extends StatelessWidget {
   final Function(int lastSeenPage)? updateLastSeenPage;
   final Function()? onPlaying;
   final Function()? onBack;
-  final Stream<int> unmuteSub;
   final bool autoPlay;
 
   @override
@@ -59,7 +55,6 @@ class VideoPage extends StatelessWidget {
         index: index,
         updateLastSeenPage: updateLastSeenPage,
         onPlaying: onPlaying,
-        unmuteSub: unmuteSub,
         autoPlay: autoPlay,
         appBar: _buildAppBar(),
         actionToolBar: _buildActionToolBar(),

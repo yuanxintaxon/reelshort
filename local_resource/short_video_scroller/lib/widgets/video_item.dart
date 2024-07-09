@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 import 'package:short_video_scroller/model/video_model.dart';
@@ -14,7 +12,6 @@ class VideoItem extends StatefulWidget {
     required this.videoWatched,
     required this.updateLastSeenPage,
     required this.onPlaying,
-    required this.unmuteSub,
     required this.autoPlay,
     required this.index,
     required this.appBar,
@@ -24,7 +21,6 @@ class VideoItem extends StatefulWidget {
   final List<String> videoWatched;
   final Function(int lastSeenPage)? updateLastSeenPage;
   final Function()? onPlaying;
-  final Stream<int> unmuteSub;
   final bool autoPlay;
   final int index;
   final Widget appBar;
@@ -94,7 +90,6 @@ class _VideoItemState extends State<VideoItem> {
               controller: _videoController!,
               autoPlay: widget.autoPlay,
               onPlaying: widget.onPlaying,
-              unmuteSub: widget.unmuteSub,
               appBar: widget.appBar,
               actionToolBar: widget.actionToolBar,
             ),
@@ -133,8 +128,6 @@ class _VideoItemState extends State<VideoItem> {
                     Uri.parse(widget.video.url))
                   ..initialize().then(
                     (_) {
-                      // mute on init
-                      _videoController!.setVolume(0.0);
                       setState(() {});
                     },
                   );
