@@ -39,7 +39,7 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
       currDuration = Duration.zero;
 
   bool showOnlyVideo = false;
-  bool firstUnmute = false;
+  bool autoUnmute = true;
   Timer? _hideTimer;
   final int secToHideFloatingWidgets = 1;
   final cinemaMode = true;
@@ -70,11 +70,12 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     if (_controller.value.volume != 1.0 && _controller.value.isPlaying) {
       Logger.print("creturn html unmute from video player app a2");
       _controller.setVolume(1.0);
-      firstUnmute = true;
-    } else if (firstUnmute &&
+      autoUnmute = true;
+    } else if (autoUnmute &&
         _controller.value.volume == 1.0 &&
         !_controller.value.isPlaying) {
       Logger.print("creturn html unmute from video player app a3");
+      autoUnmute = false;
       _controller.play();
     }
   }
@@ -137,12 +138,14 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
     if (_controller.value.isPlaying) {
       _controller.pause();
       setState(() {
+        autoUnmute = false;
         _showPause = true;
       });
     } else {
       _controller.play();
       widget.onPlaying?.call();
       setState(() {
+        autoUnmute = false;
         _showPause = false;
       });
     }
