@@ -240,7 +240,10 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
         alignment: Alignment.center,
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
-          onTap: _controller.play,
+          onTap: () {
+            _controller.play();
+            widget.onPlaying?.call();
+          },
           child: Container(
             width: 40,
             height: 40,
@@ -291,7 +294,10 @@ class _VideoPlayerAppState extends State<VideoPlayerApp> {
                   behavior: HitTestBehavior.translucent,
                   onTap: _controller.value.isPlaying
                       ? _controller.pause
-                      : _controller.play,
+                      : () {
+                          _controller.play();
+                          widget.onPlaying?.call();
+                        },
                   child: Icon(
                       _controller.value.isPlaying
                           ? Icons.pause_rounded
