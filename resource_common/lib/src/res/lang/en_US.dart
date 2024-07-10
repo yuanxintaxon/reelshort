@@ -79,7 +79,7 @@ const Map<String, String> en_US = {
   "myListNHistory": "My List & History",
   "feedback": "Feedback",
   "signIn": "Sign in",
-  "logOut": "LogOut",
+  "logOut": "Log Out",
   "welcomeToX": "Welcome to %s !",
   "signInWithX": "Sign in with %s",
   "byContinuingIAgree": "By continuing, I agree to the",
