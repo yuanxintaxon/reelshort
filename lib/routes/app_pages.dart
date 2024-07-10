@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../pages/dashboard/dashboard_binding.dart';
+import '../pages/dashboard/dashboard_view.dart';
 import '../pages/home/home_binding.dart';
 import '../pages/home/home_view.dart';
 import '../pages/videos/videos_binding.dart';
@@ -63,6 +65,12 @@ class AppPages {
       name: AppRoutes.videos,
       page: () => VideosPage(),
       binding: VideosBinding(),
+      // middlewares: [AuthGuard(), ArgumentMiddleware()],
+    ),
+    _pageBuilder(
+      name: AppRoutes.dashboard,
+      page: () => DashboardPage(),
+      binding: DashboardBinding(),
       // middlewares: [AuthGuard(), ArgumentMiddleware()],
     ),
   ];

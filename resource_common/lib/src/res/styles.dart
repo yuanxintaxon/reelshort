@@ -155,13 +155,15 @@ class Styles {
   static Color c_F3DC89 = const Color(0xFFF3DC89); // new gold button color
   static Color c_00C25F = const Color(0xFF00C25F); // earnings details btn color
 
-  /// new
+  /// new - reelshort
   static Color c_898783 = const Color(0xFF898783); // carousel inacitive tab
   static Color c_807F80 = const Color(0xFF807F80); // secondary text
   static Color c_2E2E2E = const Color(0xFF2E2E2E); // navbar bg
   static Color c_D5495B = const Color(0xFFD5495B); // theme primary color
   static Color c_9B9B9B = const Color(0xFF9B9B9B); // play/pause icon
   static Color c_EA3E54 = const Color(0xFFEA3E54); // slider thumb
+  static Color c_181818 = const Color(0xFF181818); // wallet balance bg
+  static Color c_E83A56 = const Color(0xFFE83A56); // top up btn bg
 
   static Color c_FFFFFF_opacity0 = c_FFFFFF.withOpacity(.0);
   static Color c_FFFFFF_opacity70 = c_FFFFFF.withOpacity(.7);
@@ -2498,28 +2500,35 @@ class Styles {
     fontSize: 20,
     fontWeight: FontWeight.w400,
   ).merge(defaultStyle);
-  static TextStyle ts_000000_16sp_semibold_sofia_pro = TextStyle(
+  static TextStyle ts_000000_17sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_000000,
-    fontSize: 16,
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_15sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 15,
     fontWeight: FontWeight.w600,
   ).merge(defaultStyle);
-  static TextStyle ts_000000_16sp_medium_sofia_pro = TextStyle(
+  static TextStyle ts_000000_15sp_medium_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_000000,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: FontWeight.w500,
   ).merge(defaultStyle);
-  static TextStyle ts_000000_16sp_regular_sofia_pro = TextStyle(
+  static TextStyle ts_000000_15sp_regular_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_000000,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: FontWeight.w400,
   ).merge(defaultStyle);
-  static TextStyle ts_000000_16sp_light_sofia_pro = TextStyle(
+  static TextStyle ts_000000_15sp_light_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_000000,
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: FontWeight.w300,
   ).merge(defaultStyle);
   static TextStyle ts_000000_13sp_semibold_sofia_pro = TextStyle(
@@ -2578,6 +2587,20 @@ class Styles {
     color: c_FFFFFF,
     fontSize: 20,
     fontWeight: FontWeight.w400,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_17sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_17sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 17,
+    fontWeight: FontWeight.w500,
     leadingDistribution: TextLeadingDistribution.proportional,
   ).merge(defaultStyle);
   static TextStyle ts_FFFFFF_15sp_bold_sofia_pro = TextStyle(
@@ -2680,6 +2703,13 @@ class Styles {
     fontWeight: FontWeight.w400,
     leadingDistribution: TextLeadingDistribution.proportional,
   ).merge(defaultStyle);
+  static TextStyle ts_807F80_17sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_807F80,
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
   static TextStyle ts_807F80_15sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_807F80,
@@ -2771,6 +2801,13 @@ class Styles {
     color: c_D5495B,
     fontSize: 20,
     fontWeight: FontWeight.w400,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_D5495B_17sp_semibold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_D5495B,
+    fontSize: 17,
+    fontWeight: FontWeight.w600,
     leadingDistribution: TextLeadingDistribution.proportional,
   ).merge(defaultStyle);
   static TextStyle ts_D5495B_15sp_semibold_sofia_pro = TextStyle(

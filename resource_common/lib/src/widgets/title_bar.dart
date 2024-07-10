@@ -57,6 +57,7 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
 
   TitleBar.navbar({
     super.key,
+    Function()? onViewHome,
     Function()? onViewHistory,
     Function()? onViewProfile,
     this.showUnderline = false,
@@ -71,7 +72,8 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
             children: [
               ImageRes.appLogo.toImage
                 ..width = 24
-                ..height = 24,
+                ..height = 24
+                ..onTap = onViewHome,
               5.hSpace,
               StrRes.reelShort.toText
                 ..style = Styles.ts_FFFFFF_15sp_semibold_sofia_pro,

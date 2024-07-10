@@ -20,7 +20,9 @@ class HomePage extends StatelessWidget {
     return Obx(
       () => Scaffold(
         backgroundColor: Styles.c_000000,
-        appBar: TitleBar.navbar(),
+        appBar: TitleBar.navbar(
+          onViewProfile: logic.viewProfile,
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [
@@ -267,8 +269,7 @@ class HomePage extends StatelessWidget {
                         child:
                             "After three years of marriage, CEO Wes Sterling is convinced that his wife Kira is a cheating gold-digger. Fed up with the CEO.brain cancer, Ryder Van Woodsen brutally dumps the love of his life"
                                 .toText
-                              ..style =
-                                  Styles.ts_807F80_12sp_semibold_sofia_pro
+                              ..style = Styles.ts_807F80_12sp_semibold_sofia_pro
                               ..maxLines = 3
                               ..overflow = TextOverflow.ellipsis,
                       ),
@@ -289,11 +290,13 @@ class HomePage extends StatelessWidget {
           child: RawScrollbar(
             // thumbVisibility: true,
             // trackVisibility: true,
+            controller: logic.continueWatchingCtrl,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: logic.continueWatchingCtrl,
               itemBuilder: (context, index) => _buildLastWatchedVideoTile(
                   "https://picsum.photos/id/${index + 50}/1080/1920",
                   listHeight),
@@ -400,11 +403,13 @@ class HomePage extends StatelessWidget {
           child: RawScrollbar(
             // thumbVisibility: true,
             // trackVisibility: true,
+            controller: logic.topPickCtrl,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: logic.topPickCtrl,
               itemBuilder: (context, index) => _buildSimpleInfoTile(
                   index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
@@ -422,11 +427,13 @@ class HomePage extends StatelessWidget {
           child: RawScrollbar(
             // thumbVisibility: true,
             // trackVisibility: true,
+            controller: logic.newReleaseCtrl,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: logic.newReleaseCtrl,
               itemBuilder: (context, index) => _buildSimpleInfoTile(
                   index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
@@ -445,11 +452,13 @@ class HomePage extends StatelessWidget {
           child: RawScrollbar(
             // thumbVisibility: true,
             // trackVisibility: true,
+            controller: logic.hiddenIdentityCtrl,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: logic.hiddenIdentityCtrl,
               itemBuilder: (context, index) => _buildSimpleInfoTile(
                   index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
@@ -468,11 +477,13 @@ class HomePage extends StatelessWidget {
           child: RawScrollbar(
             // thumbVisibility: true,
             // trackVisibility: true,
+            controller: logic.loveAtFirstSightCtrl,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: logic.loveAtFirstSightCtrl,
               itemBuilder: (context, index) => _buildSimpleInfoTile(
                   index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
@@ -490,11 +501,13 @@ class HomePage extends StatelessWidget {
           child: RawScrollbar(
             // thumbVisibility: true,
             // trackVisibility: true,
+            controller: logic.youngLoveCtrl,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: logic.youngLoveCtrl,
               itemBuilder: (context, index) => _buildSimpleInfoTile(
                   index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
@@ -512,11 +525,13 @@ class HomePage extends StatelessWidget {
           child: RawScrollbar(
             // thumbVisibility: true,
             // trackVisibility: true,
+            controller: logic.toxicNTabooCtrl,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: logic.toxicNTabooCtrl,
               itemBuilder: (context, index) => _buildSimpleInfoTile(
                   index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
@@ -535,11 +550,13 @@ class HomePage extends StatelessWidget {
           child: RawScrollbar(
             // thumbVisibility: true,
             // trackVisibility: true,
+            controller: logic.werewolfNVampireCtrl,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: logic.werewolfNVampireCtrl,
               itemBuilder: (context, index) => _buildSimpleInfoTile(
                   index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",
@@ -557,11 +574,13 @@ class HomePage extends StatelessWidget {
           child: RawScrollbar(
             // thumbVisibility: true,
             // trackVisibility: true,
+            controller: logic.asianStoriesCtrl,
             thickness: 5,
             child: ListView.separated(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
               physics: const AlwaysScrollableScrollPhysics(),
+              controller: logic.asianStoriesCtrl,
               itemBuilder: (context, index) => _buildSimpleInfoTile(
                   index,
                   "https://picsum.photos/id/${index + 50}/1080/1920",

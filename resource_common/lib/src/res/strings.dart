@@ -280,4 +280,24 @@ class StrRes {
   static String get moreRecommended => 'moreRecommended'.tr;
 
   static String get slidToBottomHint => 'slidToBottomHint'.tr;
+
+  static String get guest => 'guest'.tr;
+
+  static String get uidLabel => 'uidLabel'.tr;
+
+  static String get coins => 'coins'.tr;
+
+  static String get bonus => 'bonus'.tr;
+
+  static String get topUp => 'topUp'.tr;
+
+  static String get myWallet => 'myWallet'.tr;
+
+  static String get myListNHistory => 'myListNHistory'.tr;
+
+  static String get feedback => 'feedback'.tr;
+
+  static String get signIn => 'signIn'.tr;
+
+  static String get logOut => 'logOut'.tr;
 }

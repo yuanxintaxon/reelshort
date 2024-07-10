@@ -22,4 +22,6 @@ class AppNavigator {
           "autoPlay": true,
         },
       );
+
+  static startDashboard() => Get.rootDelegate.offNamed(AppRoutes.dashboard);
 }

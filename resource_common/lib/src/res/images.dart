@@ -66,10 +66,19 @@ class ImageRes {
   static const checkboxUncheckedBlack =
       "$_dir/ic_checkbox_unchecked_black.webp";
 
-  // new
+  /// new
   static const historyWhite = "$_dir/ic_history_white.webp";
   static const playWhiteSmall = "$_dir/ic_play_white_small.webp";
   static const playWhite = "$_dir/ic_play_white.webp";
   static const profilePlaceholder = "$_dir/ic_profile_placeholder.webp";
   static const thumbnailPlaceholder = "$_dir/ic_thumbnail_placeholder.webp";
+  // profile
+  static const coin = "$_dir/ic_coin.webp";
+  static const wallet = "$_dir/ic_wallet.webp";
+  static const listAndHistory = "$_dir/ic_list_and_history.webp";
+  static const feedback = "$_dir/ic_feedback.webp";
+  static const rightChevronGrey = "$_dir/ic_right_chevron_grey.webp";
+  static const google = "$_dir/ic_google.webp";
+  static const apple = "$_dir/ic_apple.webp";
+  static const facebook = "$_dir/ic_facebook.webp";
 }
