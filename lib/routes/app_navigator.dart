@@ -24,4 +24,6 @@ class AppNavigator {
       );
 
   static startDashboard() => Get.rootDelegate.offNamed(AppRoutes.dashboard);
+
+  static startLogin() => Get.rootDelegate.offNamed(AppRoutes.login);
 }

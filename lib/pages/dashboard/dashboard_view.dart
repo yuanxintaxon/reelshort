@@ -204,6 +204,7 @@ class DashboardPage extends StatelessWidget {
         width: double.infinity,
         child: Button(
           height: 44,
+          onTap: logic.signIn,
           text: StrRes.signIn,
           textStyle: Styles.ts_FFFFFF_15sp_medium_sofia_pro,
           border: Border.all(
@@ -219,6 +220,7 @@ class DashboardPage extends StatelessWidget {
         width: double.infinity,
         child: Button(
           height: 44,
+          onTap: logic.logOut,
           text: StrRes.logOut,
           textStyle: Styles.ts_FFFFFF_15sp_medium_sofia_pro,
           border: Border.all(

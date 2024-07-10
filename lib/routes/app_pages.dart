@@ -5,6 +5,8 @@ import '../pages/dashboard/dashboard_binding.dart';
 import '../pages/dashboard/dashboard_view.dart';
 import '../pages/home/home_binding.dart';
 import '../pages/home/home_view.dart';
+import '../pages/login/login_binding.dart';
+import '../pages/login/login_view.dart';
 import '../pages/videos/videos_binding.dart';
 import '../pages/videos/videos_view.dart';
 import '../pages/welcome/welcome_binding.dart';
@@ -71,6 +73,12 @@ class AppPages {
       name: AppRoutes.dashboard,
       page: () => DashboardPage(),
       binding: DashboardBinding(),
+      // middlewares: [AuthGuard(), ArgumentMiddleware()],
+    ),
+    _pageBuilder(
+      name: AppRoutes.login,
+      page: () => LoginPage(),
+      binding: LoginBinding(),
       // middlewares: [AuthGuard(), ArgumentMiddleware()],
     ),
   ];

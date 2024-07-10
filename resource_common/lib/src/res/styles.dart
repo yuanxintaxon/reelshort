@@ -164,6 +164,8 @@ class Styles {
   static Color c_EA3E54 = const Color(0xFFEA3E54); // slider thumb
   static Color c_181818 = const Color(0xFF181818); // wallet balance bg
   static Color c_E83A56 = const Color(0xFFE83A56); // top up btn bg
+  static Color c_547DE6 = const Color(0xFF547DE6); // google signin bg
+  static Color c_4769B2 = const Color(0xFF4769B2); // facebook signin bg
 
   static Color c_FFFFFF_opacity0 = c_FFFFFF.withOpacity(.0);
   static Color c_FFFFFF_opacity70 = c_FFFFFF.withOpacity(.7);
@@ -2507,6 +2509,13 @@ class Styles {
     fontWeight: FontWeight.w600,
     leadingDistribution: TextLeadingDistribution.proportional,
   ).merge(defaultStyle);
+  static TextStyle ts_000000_17sp_medium_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 17,
+    fontWeight: FontWeight.w500,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
   static TextStyle ts_000000_15sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_000000,
@@ -2575,6 +2584,20 @@ class Styles {
   ).merge(defaultStyle);
 
   /// FFFFFF
+  static TextStyle ts_FFFFFF_30sp_black_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 30,
+    fontWeight: FontWeight.w900,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
+  static TextStyle ts_FFFFFF_20sp_black_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_FFFFFF,
+    fontSize: 20,
+    fontWeight: FontWeight.w900,
+    leadingDistribution: TextLeadingDistribution.proportional,
+  ).merge(defaultStyle);
   static TextStyle ts_FFFFFF_20sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_FFFFFF,

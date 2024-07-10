@@ -5,6 +5,7 @@ abstract class AppRoutes {
   static const home = '/';
   static const videos = '/videos';
   static const dashboard = '/dashboard';
+  static const login = '/login';
 }
 
 extension RoutesExtension on String {

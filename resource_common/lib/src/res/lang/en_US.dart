@@ -80,4 +80,13 @@ const Map<String, String> en_US = {
   "feedback": "Feedback",
   "signIn": "Sign in",
   "logOut": "LogOut",
+  "welcomeToX": "Welcome to %s !",
+  "signInWithX": "Sign in with %s",
+  "byContinuingIAgree": "By continuing, I agree to the",
+  "serviceAgreement": "Service Agreement",
+  "and": "And",
+  "privacyPolicy": "Privacy Policy",
+  "google": "Google",
+  "facebook": "Facebook",
+  "apple": "Apple",
 };

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/gradient_borders.dart';
 import 'package:resource_common/resource_common.dart';
+import 'package:sprintf/sprintf.dart';
 
 class Button extends StatelessWidget {
   const Button({
@@ -222,6 +223,60 @@ class ExpandedImageTextButton extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final bool enabled;
   final Function()? onTap;
+
+  ExpandedImageTextButton.signInWithGoogle({super.key, this.onTap})
+      : icon = ImageRes.google,
+        text = sprintf(StrRes.signInWithX, [StrRes.google]),
+        iconSize = 28,
+        iconTextGap = 20,
+        iconBottomPadding = null,
+        disabledIcon = null,
+        iconTrailing = false,
+        enabledColor = Styles.c_547DE6,
+        disabledColor = null,
+        radius = 50,
+        textStyle = Styles.ts_FFFFFF_17sp_semibold_sofia_pro,
+        disabledTextStyle = null,
+        height = 48,
+        padding = const EdgeInsets.symmetric(horizontal: 35),
+        mainAxisAlignment = MainAxisAlignment.start,
+        enabled = true;
+
+  ExpandedImageTextButton.signInWithFacebook({super.key, this.onTap})
+      : icon = ImageRes.facebook,
+        text = sprintf(StrRes.signInWithX, [StrRes.facebook]),
+        iconSize = 28,
+        iconTextGap = 20,
+        iconBottomPadding = null,
+        disabledIcon = null,
+        iconTrailing = false,
+        enabledColor = Styles.c_4769B2,
+        disabledColor = null,
+        radius = 50,
+        textStyle = Styles.ts_FFFFFF_17sp_semibold_sofia_pro,
+        disabledTextStyle = null,
+        height = 48,
+        padding = const EdgeInsets.symmetric(horizontal: 35),
+        mainAxisAlignment = MainAxisAlignment.start,
+        enabled = true;
+
+  ExpandedImageTextButton.signInWithApple({super.key, this.onTap})
+      : icon = ImageRes.apple,
+        text = sprintf(StrRes.signInWithX, [StrRes.apple]),
+        iconSize = 28,
+        iconTextGap = 20,
+        iconBottomPadding = null,
+        disabledIcon = null,
+        iconTrailing = false,
+        enabledColor = Styles.c_FFFFFF,
+        disabledColor = null,
+        radius = 50,
+        textStyle = Styles.ts_000000_17sp_semibold_sofia_pro,
+        disabledTextStyle = null,
+        height = 48,
+        padding = const EdgeInsets.symmetric(horizontal: 35),
+        mainAxisAlignment = MainAxisAlignment.start,
+        enabled = true;
 
   @override
   Widget build(BuildContext context) {

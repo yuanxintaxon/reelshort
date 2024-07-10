@@ -57,7 +57,6 @@ class ImageRes {
   static const defaultUserAvatar = "$_dir/ic_default_user_avatar.webp";
   static const defaultUserGroupAvatar =
       "$_dir/ic_default_user_group_avatar.webp";
-  static const closeWhite = "$_dir/ic_close_white.webp";
   static const logoTextGold = "$_dir/ic_logo_text_gold.webp";
   static const appLogo = "$_dir/ic_app_logo.webp";
   static const closeBlack = "$_dir/ic_close_black.webp";
@@ -83,4 +82,6 @@ class ImageRes {
   static const appleWhite = "$_dir/ic_apple_white.webp";
   static const facebook = "$_dir/ic_facebook.webp";
   static const facebookBlacknwhite = "$_dir/ic_facebook_blacknwhite.webp";
+  static const loginBg = "$_dir/ic_login_bg.webp";
+  static const closeWhite = "$_dir/ic_close_white.webp";
 }

@@ -300,4 +300,22 @@ class StrRes {
   static String get signIn => 'signIn'.tr;
 
   static String get logOut => 'logOut'.tr;
+
+  static String get welcomeToX => 'welcomeToX'.tr;
+
+  static String get signInWithX => 'signInWithX'.tr;
+
+  static String get byContinuingIAgree => 'byContinuingIAgree'.tr;
+
+  static String get serviceAgreement => 'serviceAgreement'.tr;
+
+  static String get and => 'and'.tr;
+
+  static String get privacyPolicy => 'privacyPolicy'.tr;
+
+  static String get google => 'google'.tr;
+
+  static String get facebook => 'facebook'.tr;
+
+  static String get apple => 'apple'.tr;
 }
