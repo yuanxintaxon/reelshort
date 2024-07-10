@@ -68,11 +68,10 @@ class DashboardPage extends StatelessWidget {
   Widget _buildSSOLogo(String ssoType) {
     if (ssoType == SSOType.GOOGLE.string) {
       return Container(
-          padding: const EdgeInsets.all(1),
+          padding: const EdgeInsets.all(0),
           height: 13,
           width: 13,
           decoration: BoxDecoration(
-            color: Styles.c_FFFFFF,
             borderRadius: BorderRadius.circular(50),
           ),
           child: ImageRes.google.toImage);
@@ -93,7 +92,7 @@ class DashboardPage extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(0),
           ),
-          child: ImageRes.facebookBlacknwhite.toImage);
+          child: ImageRes.facebook.toImage);
     }
     return Container();
   }
