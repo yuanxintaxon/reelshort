@@ -80,5 +80,7 @@ class ImageRes {
   static const rightChevronGrey = "$_dir/ic_right_chevron_grey.webp";
   static const google = "$_dir/ic_google.webp";
   static const apple = "$_dir/ic_apple.webp";
+  static const appleWhite = "$_dir/ic_apple_white.webp";
   static const facebook = "$_dir/ic_facebook.webp";
+  static const facebookBlacknwhite = "$_dir/ic_facebook_blacknwhite.webp";
 }

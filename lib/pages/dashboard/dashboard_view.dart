@@ -82,20 +82,18 @@ class DashboardPage extends StatelessWidget {
           height: 13,
           width: 13,
           decoration: BoxDecoration(
-            color: Styles.c_FFFFFF,
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(0),
           ),
-          child: ImageRes.apple.toImage);
+          child: ImageRes.appleWhite.toImage);
     } else if (ssoType == SSOType.FACEBOOK.string) {
       return Container(
-          padding: const EdgeInsets.all(0),
+          padding: const EdgeInsets.all(1),
           height: 13,
           width: 13,
           decoration: BoxDecoration(
-            color: Styles.c_FFFFFF,
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(0),
           ),
-          child: ImageRes.facebook.toImage);
+          child: ImageRes.facebookBlacknwhite.toImage);
     }
     return Container();
   }
