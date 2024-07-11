@@ -76,7 +76,8 @@ class TitleBar extends StatelessWidget implements PreferredSizeWidget {
                 ..onTap = onViewHome,
               5.hSpace,
               StrRes.reelShort.toText
-                ..style = Styles.ts_FFFFFF_15sp_semibold_sofia_pro,
+                ..style = Styles.ts_FFFFFF_15sp_semibold_sofia_pro
+                ..onTap = onViewHome,
             ],
           ),
         ),
