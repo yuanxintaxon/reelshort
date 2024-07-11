@@ -115,7 +115,7 @@ class DashboardPage extends StatelessWidget {
                       ..height = 22,
                     4.hSpace,
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 2),
+                      padding: const EdgeInsets.only(bottom: 1),
                       child: Row(
                         children: [
                           /// coins
