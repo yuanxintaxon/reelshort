@@ -84,4 +84,7 @@ class ImageRes {
   static const facebookBlacknwhite = "$_dir/ic_facebook_blacknwhite.webp";
   static const loginBg = "$_dir/ic_login_bg.webp";
   static const closeWhite = "$_dir/ic_close_white.webp";
+  static const facebookCircular = "$_dir/ic_facebook_circular.webp";
+  static const twitterCircular = "$_dir/ic_twitter_circular.webp";
+  static const linkGrey = "$_dir/ic_link_grey.webp";
 }

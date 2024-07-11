@@ -44,10 +44,10 @@ class ActionsToolbar extends StatelessWidget {
                   },
                 )
               : _getSocialAction(icon: Icons.favorite_rounded, title: "39.1k"),
-          (shareWidget != null)
+          (false)
               ? shareWidget!(video)
               : _getSocialAction(icon: Icons.star_rounded, title: '1.5m'),
-          (shareWidget != null)
+          (false)
               ? shareWidget!(video)
               : _getSocialAction(icon: Icons.layers_rounded, title: 'List'),
           (shareWidget != null)

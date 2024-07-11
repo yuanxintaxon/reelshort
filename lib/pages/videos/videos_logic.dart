@@ -3,6 +3,8 @@ import 'package:reelshort/routes/app_navigator.dart';
 import 'package:reelshort/routes/app_pages.dart';
 import 'package:resource_common/resource_common.dart';
 import 'dart:html' as html;
+import 'package:url_launcher/url_launcher.dart';
+import 'package:short_video_scroller/short_video_scroller.dart';
 
 class VideosLogic extends GetxController {
   final data = <Map<String, dynamic>>[].obs;
@@ -10,6 +12,9 @@ class VideosLogic extends GetxController {
 
   final autoPlay = false.obs;
   int? initialVideoId;
+
+  final showShareModal = false.obs;
+  final Rx<VideoModel?> videoToShare = Rx<VideoModel?>(null);
 
   @override
   void onInit() {
@@ -85,7 +90,8 @@ class VideosLogic extends GetxController {
         'thumbnail':
             'https://chat-dev.ai1268.com/api/object/518789/4b070588-e93c-4d6b-b683-7bd36f9e717a.png?type=image',
         'video_title': 'Receiving Quotation',
-        'description': 'description',
+        'description':
+            'Join us as we explore the intricate process of receiving quotations at sea. From negotiating prices to assessing quality, discover the challenges and rewards of maritime business dealings firsthand. Whether you\'re a seasoned professional or an aspiring entrepreneur, this video offers valuable insights into the world of international trade on the open waters.',
         'likes': 5,
         'liked': true,
         'product_name': 'productName',
@@ -101,7 +107,8 @@ class VideosLogic extends GetxController {
         'thumbnail':
             'https://chat-dev.ai1268.com/api/object/518789/12fb3972-9004-4722-8855-1babb63d834a.png?type=image',
         'video_title': 'Restaurant Queue',
-        'description': 'description',
+        'description':
+            'Ever wondered what it\'s like to wait in an endless restaurant queue? In this video, we dive into the bustling world of popular eateries where hungry patrons endure long lines for a taste of culinary delight. From tips to pass the time to behind-the-scenes stories from restaurant staff, join us as we uncover the highs and lows of dining out in a city known for its gastronomic adventures.',
         'likes': 5,
         'liked': true,
         'product_name': 'productName',
@@ -117,7 +124,8 @@ class VideosLogic extends GetxController {
         'thumbnail':
             'https://chat-dev.ai1268.com/api/object/518789/b6116fbc-3fa4-4feb-9787-aa31563f63bd.png?type=image',
         'video_title': 'Shopping Mall',
-        'description': 'description',
+        'description':
+            'Step into the grand opening of our city\'s newest shopping destination! Explore state-of-the-art facilities, trendy boutiques, and exciting entertainment options all under one roof. From exclusive previews of flagship stores to interviews with designers and shoppers alike, this video captures the buzz and excitement surrounding the launch of a modern retail paradise. Don\'t miss out on the next big thing in shopping experiences!',
         'likes': 5,
         'liked': true,
         'product_name': 'productName',
@@ -171,5 +179,42 @@ class VideosLogic extends GetxController {
     Get.rootDelegate.offNamed(AppRoutes.home);
     // Get.rootDelegate.history.clear();
     // Get.rootDelegate.toNamed(AppRoutes.home);
+  }
+
+  void share(VideoModel? video) {
+    videoToShare.value = video;
+    showShareModal.value = true;
+  }
+
+  void closeShare() {
+    videoToShare.value = null;
+    showShareModal.value = false;
+  }
+
+  Future<void> facebookShare() async {
+    final linkToShare =
+        '${Urls.webUrl}/#${AppRoutes.videos}?id=${videoToShare.value!.id}';
+    final url = Uri.parse('${Urls.facebookPost}$linkToShare');
+
+    if (await canLaunchUrl(url)) {
+      launchUrl(url);
+    }
+  }
+
+  Future<void> twitterShare() async {
+    final linkToShare =
+        '${Urls.webUrl}/#${AppRoutes.videos}?id=${videoToShare.value!.id}';
+    final url = Uri.parse('${Urls.twitterPost}$linkToShare');
+
+    if (await canLaunchUrl(url)) {
+      launchUrl(url);
+    }
+  }
+
+  void copyLink() {
+    final linkToShare =
+        '${Urls.webUrl}/#${AppRoutes.videos}?id=${videoToShare.value!.id}';
+    IMUtils.copy(text: linkToShare);
+    IMViews.showToast(StrRes.copiedLinkSuccessfully);
   }
 }

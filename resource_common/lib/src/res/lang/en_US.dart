@@ -89,4 +89,8 @@ const Map<String, String> en_US = {
   "google": "Google",
   "facebook": "Facebook",
   "apple": "Apple",
+  "twitter": "Twitter",
+  "share": "Share",
+  "link": "Link",
+  "copiedLinkSuccessfully": "Copied link sucessfully."
 };

@@ -28,7 +28,6 @@ class LoginPage extends StatelessWidget {
             child: ImageRes.closeWhite.toImage
               ..width = 18
               ..height = 18
-              ..fit = BoxFit.cover
               ..onTap = logic.startDashboard,
           ),
           _buildContentView(),

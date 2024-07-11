@@ -318,4 +318,12 @@ class StrRes {
   static String get facebook => 'facebook'.tr;
 
   static String get apple => 'apple'.tr;
+
+  static String get twitter => 'twitter'.tr;
+
+  static String get share => 'share'.tr;
+
+  static String get link => 'link'.tr;
+
+  static String get copiedLinkSuccessfully => 'copiedLinkSuccessfully'.tr;
 }

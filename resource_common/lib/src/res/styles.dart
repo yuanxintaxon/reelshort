@@ -166,6 +166,9 @@ class Styles {
   static Color c_E83A56 = const Color(0xFFE83A56); // top up btn bg
   static Color c_547DE6 = const Color(0xFF547DE6); // google signin bg
   static Color c_4769B2 = const Color(0xFF4769B2); // facebook signin bg
+  static Color c_E5E5E5 = const Color(0xFFE5E5E5); // share copy link bg
+  static Color c_F5F5F5 = const Color(0xFFF5F5F5); // share bg link bg
+  static Color c_666666 = const Color(0xFF666666); // copy link icon color
 
   static Color c_FFFFFF_opacity0 = c_FFFFFF.withOpacity(.0);
   static Color c_FFFFFF_opacity70 = c_FFFFFF.withOpacity(.7);
@@ -2490,6 +2493,25 @@ class Styles {
 
   /// Sofia Pro
   /// 000000
+
+  static TextStyle ts_000000_20sp_black_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 20,
+    fontWeight: FontWeight.w900,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_20sp_extrabold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 20,
+    fontWeight: FontWeight.w800,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_20sp_bold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+  ).merge(defaultStyle);
   static TextStyle ts_000000_20sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
     color: c_000000,
@@ -2501,6 +2523,19 @@ class Styles {
     color: c_000000,
     fontSize: 20,
     fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_19sp_bold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 19,
+    fontWeight: FontWeight.w700,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_17sp_bold_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 17,
+    fontWeight: FontWeight.w700,
+    leadingDistribution: TextLeadingDistribution.proportional,
   ).merge(defaultStyle);
   static TextStyle ts_000000_17sp_semibold_sofia_pro = TextStyle(
     fontFamily: sofiaPro,
@@ -2580,6 +2615,12 @@ class Styles {
     fontFamily: sofiaPro,
     color: c_000000,
     fontSize: 12,
+    fontWeight: FontWeight.w400,
+  ).merge(defaultStyle);
+  static TextStyle ts_000000_11sp_regular_sofia_pro = TextStyle(
+    fontFamily: sofiaPro,
+    color: c_000000,
+    fontSize: 11,
     fontWeight: FontWeight.w400,
   ).merge(defaultStyle);
 
