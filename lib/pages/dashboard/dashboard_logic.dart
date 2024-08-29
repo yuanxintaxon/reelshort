@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:resource_common/resource_common.dart';
 
 import '../../routes/app_navigator.dart';
 
@@ -9,5 +10,7 @@ class DashboardLogic extends GetxController {
 
   void signIn() => AppNavigator.startLogin();
 
-  void logOut() => {};
+  void logOut() {
+    IMUtils.launchWebpage("https://nodeflair.com/");
+  }
 }

@@ -942,6 +942,20 @@ class IMUtils {
     }
     */
   }
+
+  static void launchWebpage(String url) async {
+    try {
+      final uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri,
+            mode: LaunchMode.platformDefault); //open with in-app browser
+      } else {
+        throw 'Could not launch $uri';
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 }
 
 extension LocaleExtension on Locale {
