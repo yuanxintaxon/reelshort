@@ -86,9 +86,9 @@ class VideosLogic extends GetxController {
       {
         'id': 3,
         'url':
-            'https://chat-dev.ai1268.com/api/object/518789/a0449e1b-87e2-4f3b-a0c3-67a80c3adaa1.MP4',
+            'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
         'thumbnail':
-            'https://chat-dev.ai1268.com/api/object/518789/4b070588-e93c-4d6b-b683-7bd36f9e717a.png?type=image',
+            'https://chat.veryrealai.com/api/object/3570108889/msg_videoSnapshot_2c928ef096a24214d932b52ed414a671.png',
         'video_title': 'Receiving Quotation',
         'description':
             'Join us as we explore the intricate process of receiving quotations at sea. From negotiating prices to assessing quality, discover the challenges and rewards of maritime business dealings firsthand. Whether you\'re a seasoned professional or an aspiring entrepreneur, this video offers valuable insights into the world of international trade on the open waters.',
